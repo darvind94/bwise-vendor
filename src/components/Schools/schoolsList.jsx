@@ -56,17 +56,25 @@ class Schools extends Component {
 
   renderList() {
     if (this.state.schoolList.length != 0) {
-      return this.state.schoolList.map((res, i) => {
+      return this.state.schoolList.map((item, i) => {
         return (
-          <tr key={res._id} className='tabledata'>
-            {/* <td>{i+1}</td>
-                            <td>{res.school_name}</td>
-                            <td>{res.keyInfo.board_of_education ? res.keyInfo.board_of_education : '---'}</td>
-                            <td>{res.address.email_id ? res.address.email_id : '---'}</td>
-                            <td>{res.address.phone_no ? res.address.phone_no : '---'}</td>
-                            <td>{res.address.location ? res.address.location : '---'}</td>
-                            <td><span className='label label-danger'>Waiting for Apporve</span></td>
-                            <td style={{ textAlign: 'center' }}><a href={'/schooldetails/' + res._id}> <i className='eye-button fa fa-eye' title='View'></i></a> &nbsp;</td> */}
+          <tr key={item._id} className='tabledata'>
+            <td>{i + 1}</td>
+            <td>{item.schoolName}</td>
+            <td>{item.board_of_education ? item.board_of_education : '---'}</td>
+            <td>{item.email_id ? item.email_id : '---'}</td>
+            <td>{item.phone_no ? item.phone_no : '---'}</td>
+            <td>{item.location ? item.location : '---'}</td>
+            <td>
+              <span className='label label-danger'>Waiting for Apporve</span>
+            </td>
+            <td style={{ textAlign: 'center' }}>
+              <a href={'/schooldetails/' + item._id}>
+                {' '}
+                <i className='eye-button fa fa-eye' title='View'></i>
+              </a>{' '}
+              &nbsp;
+            </td>
           </tr>
         );
       });

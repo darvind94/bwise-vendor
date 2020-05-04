@@ -14,6 +14,7 @@ class FetchCall extends Component {
       method: 'POST', // *GET, POST, PUT, DELETE, etc.
       headers: {
         'x-auth-token': token,
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify(data),
     });

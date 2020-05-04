@@ -277,7 +277,7 @@ class Schools extends Component {
         // banner_img: this.state.banner_img,
         // gallery_img: this.state.gallery_img,
         about_school: this.state.about,
-        google_location: this.state.google_location,
+        google_location: this.state.iframe,
         school_timimg: this.state.school_timimg,
         mode_of_payment: this.state.modeofpayment,
       };
