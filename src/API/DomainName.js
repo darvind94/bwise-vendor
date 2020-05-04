@@ -1,7 +1,8 @@
-var path = 'http://ec2-54-251-142-179.ap-southeast-1.compute.amazonaws.com/:27017/api/';
+var path = 'http://54.251.142.179:5000/api/';
+// var path = 'http://localhost:5000/api/';
 
 var config = {
-    register: path ,
-}
+  register: path,
+};
 
 export default config;
