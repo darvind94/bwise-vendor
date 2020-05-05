@@ -76,7 +76,7 @@ class Schools extends Component {
                 <div className='content-sec col-md-12 col-xs-12 pad-no mar-t-no'>
                   <table
                     id='example1'
-                    className='table table-bordered table-striped dataTable'
+                    className='table table-bordered table-striped '
                     role='grid'
                     aria-describedby='example1_info'
                   >
