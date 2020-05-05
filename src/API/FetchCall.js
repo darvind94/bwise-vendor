@@ -41,4 +41,25 @@ class FetchCall extends Component {
   };
 }
 
+async function addPreschool(data) {
+  let result = await fetch(config.register + 'preschool', {
+    method: 'POST',
+    mode: 'cors',
+    headers: { 'x-auth-token': token, 'Content-Type': 'application/json' },
+    body: JSON.stringify(data),
+  });
+  return result.json();
+}
+
+async function getAllPreSchools() {
+  let result = await fetch(config.register + 'preschool', {
+    method: 'GET',
+    mode: 'cors',
+    headers: { 'x-auth-token': token, 'Content-Type': 'application/json' },
+  });
+  return result.json();
+}
+
+export { addPreschool, getAllPreSchools };
+
 export default FetchCall;
