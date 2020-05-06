@@ -174,31 +174,33 @@ class Schools extends Component {
 
   handleChange = (e) => {
     this.setState({ [e.target.name]: e.target.value });
-
-    if (
-      e.target.name === 'opening_timimg_start' ||
-      e.target.name === 'opening_timimg_end'
-    ) {
-      this.setState({
-        opening_timimg:
-          this.state.opening_timimg_start +
-          ' to ' +
-          this.state.opening_timimg_end,
-      });
-    }
   };
 
   handleSubmit = (e) => {
     e.preventDefault();
     // const isValid = this.isEmailValid();
+    let required_document = window.document.querySelectorAll(
+      '#req_document option:checked'
+    );
+    required_document = Array.from(required_document)
+      .map((item) => item.value)
+      .join(', ');
+
+    const data = {
+      ...this.state,
+      opening_timimg:
+        this.state.opening_timimg_start +
+        ' to ' +
+        this.state.opening_timimg_end,
+    };
 
     if (
       this.state.ownerName !== '' &&
       this.state.schoolName !== '' &&
       this.state.processing_fee !== ''
     ) {
-      console.log(this.state);
-      addPreschool(this.state).then((res) =>
+      console.log(this.state, required_document);
+      addPreschool({ ...data, required_document }).then((res) =>
         this.props.history.push('/preschoolslist')
       );
     } else {
@@ -642,13 +644,18 @@ class Schools extends Component {
                                 <option
                                   key='1'
                                   id='1'
-                                  data-id='1'
-                                  value='private'
+                                  data-id='Private'
+                                  value='Private'
                                 >
                                   Private
                                 </option>
-                                <option value='Govt'>Govt</option>
-                                <option value='International'>
+                                <option data-id='Govt' value='Govt'>
+                                  Govt
+                                </option>
+                                <option
+                                  data-id='International'
+                                  value='International'
+                                >
                                   International
                                 </option>
                               </select>
@@ -671,15 +678,14 @@ class Schools extends Component {
                                   key='1'
                                   id='1'
                                   data-id='1'
-                                  value='Daycare'
+                                  value='State'
                                 >
-                                  Day Care
+                                  State
                                 </option>
-                                <option value='Play Group'> Play Group</option>
-                                <option value='Nursery'> Nursery</option>
-                                <option value='Kindergarden'>
-                                  Kindergarden
-                                </option>
+                                <option value='ISCE'> ISCE</option>
+                                <option value='IB'> IB</option>
+                                <option value='CBSE'>CBSE</option>
+                                <option value='Other'>Other</option>
                               </select>
                             </div>
                           </div>
@@ -904,10 +910,12 @@ class Schools extends Component {
                             <div className='custom-select-drop dropdown'>
                               <select
                                 name='required_document'
-                                value={this.state.required_document}
+                                id='req_document'
+                                // value={this.state.required_document}
                                 onChange={this.handleChange}
                                 className='form-control selectpicker'
                                 data-live-search='true'
+                                multiple
                               >
                                 <option
                                   key='1'

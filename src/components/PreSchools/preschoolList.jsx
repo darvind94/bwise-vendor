@@ -74,52 +74,95 @@ class Schools extends Component {
 
               <div className='main-content col-md-12 col-xs-12'>
                 <div className='content-sec col-md-12 col-xs-12 pad-no mar-t-no'>
-                  <table
-                    id='example1'
-                    className='table table-bordered table-striped '
-                    role='grid'
-                    aria-describedby='example1_info'
-                  >
-                    <thead>
-                      <tr role='row'>
-                        <th className='tabledata'>S.No</th>
-                        <th className='tabledata'>Schools Name</th>
-                        <th className='tabledata'>Board</th>
-                        <th className='tabledata'>Email Id</th>
-                        <th className='tabledata'>Phone Number</th>
-                        <th className='tabledata'>Location</th>
-                        <th className='tabledata'>Status</th>
-                        <th className='tabledata'>Action</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {this.state.preSchoolList.map((item, index) => (
-                        <tr className='tabledata' key={item._id}>
-                          <td>{index + 1}</td>
-                          <td>{item.schoolName}</td>
-                          <td>{item.board_of_education}</td>
-                          <td>{item.email_id}</td>
-                          <td>{item.phone_number}</td>
-                          <td>{item.location}</td>
-                          <td>
-                            <span className='label label-danger'>
-                              Waiting for Apporve
-                            </span>
-                          </td>
-                          <td style={{ textAlign: 'center' }}>
-                            <a href='/schooldetails'>
-                              {' '}
-                              <i
-                                className='eye-button fa fa-eye'
-                                title='View'
-                              ></i>
-                            </a>{' '}
-                            &nbsp;
-                          </td>
+                  <div style={{ overflowX: 'auto' }}>
+                    <table
+                      id='example1'
+                      className='table table-bordered table-striped '
+                      role='grid'
+                      aria-describedby='example1_info'
+                    >
+                      <thead>
+                        <tr role='row'>
+                          <th className='tabledata'>S.No</th>
+                          <th className='tabledata'>Country</th>
+                          <th className='tabledata'>City</th>
+
+                          <th className='tabledata'>Owner Name</th>
+                          <th className='tabledata'>Schools Name</th>
+                          <th className='tabledata'>Email Id</th>
+                          <th className='tabledata'>Phone Number</th>
+                          <th className='tabledata'>Fax Number</th>
+                          <th className='tabledata'>Website</th>
+
+                          <th className='tabledata'>Location</th>
+                          <th className='tabledata'>Pincode</th>
+                          <th className='tabledata'>About School</th>
+                          <th className='tabledata'>Google Location</th>
+                          <th className='tabledata'>School Type</th>
+                          <th className='tabledata'>Board</th>
+                          <th className='tabledata'>Open Timing</th>
+                          <th className='tabledata'>No. of supporting staff</th>
+                          <th className='tabledata'>Other fees</th>
+                          <th className='tabledata'>Admission fees</th>
+                          <th className='tabledata'>Admission Link</th>
+
+                          <th className='tabledata'>Processing fees</th>
+                          <th className='tabledata'>Admission Process</th>
+
+                          <th className='tabledata'>Status</th>
+                          <th className='tabledata'>Action</th>
                         </tr>
-                      ))}
-                    </tbody>
-                  </table>
+                      </thead>
+                      <tbody>
+                        {this.state.preSchoolList.map((item, index) => (
+                          <tr className='tabledata' key={item._id}>
+                            <td>{index + 1}</td>
+                            <th>India</th>
+                            <td>{item.location}</td>
+
+                            <td>{item.ownerName}</td>
+
+                            <td>{item.schoolName}</td>
+                            <td>{item.email_id}</td>
+                            <td>{item.phone_number}</td>
+                            <td>{item.fax_number}</td>
+                            <td>{item.website}</td>
+
+                            <td>{item.location}</td>
+                            <td>{item.pincode}</td>
+                            <td>{item.about_school}</td>
+                            <td>{item.google_location}</td>
+                            <td>{item.schoolType}</td>
+                            <td>{item.board_of_education}</td>
+                            <td>{item.opening_timimg}</td>
+                            <td>{item.number_of_teachers}</td>
+                            <td>{item.other_fee}</td>
+                            <td>{item.addmission_fee}</td>
+                            <td>{item.admission_link}</td>
+
+                            <td>{item.processing_fee}</td>
+                            <td>{item.admission_process}</td>
+
+                            <td>
+                              <span className='label label-danger'>
+                                Waiting for Apporve
+                              </span>
+                            </td>
+                            <td style={{ textAlign: 'center' }}>
+                              <a href='/schooldetails'>
+                                {' '}
+                                <i
+                                  className='eye-button fa fa-eye'
+                                  title='View'
+                                ></i>
+                              </a>{' '}
+                              &nbsp;
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
                 </div>
               </div>
             </div>
