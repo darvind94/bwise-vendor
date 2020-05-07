@@ -18,8 +18,6 @@ class Playarea extends Component {
       website: '',
       email_id: '',
       price_per_hour: '',
-      about_playarea: '',
-      price_per_hour: '',
       no_of_support_staff: '',
       entry_fee: '',
       weekday_rate: '',

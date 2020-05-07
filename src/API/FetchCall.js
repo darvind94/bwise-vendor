@@ -76,7 +76,15 @@ async function addPlayArea(data) {
   console.log('Sucess');
   return result.json();
 }
+async function getAllPlayareas() {
+  let result = await fetch(config.register + 'playarea', {
+    method: 'GET',
+    mode: 'cors',
+    headers: { 'x-auth-token': token, 'Content-Type': 'application/json' },
+  });
+  return result.json();
+}
 
-export { addPreschool, getAllPreSchools, addPlayArea };
+export { addPreschool, getAllPreSchools, addPlayArea, getAllPlayareas };
 
 export default FetchCall;
