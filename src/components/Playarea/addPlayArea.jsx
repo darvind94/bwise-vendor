@@ -308,27 +308,25 @@ class Playarea extends Component {
                                   key='1'
                                   id='1'
                                   data-id='1'
-                                  value='Ball Pool'
+                                  value='ac_classrooms'
                                 >
-                                  Ball Pool
+                                  Ac Classrooms
                                 </option>
-                                <option value='Bridges/Tunnels'>
-                                  Bridges/Tunnels
+                                <option value='foods_and_snacks'>
+                                  Food and Snacks
                                 </option>
-                                <option value='Climbing nets'>
-                                  Climbing nets
+                                <option value='transport'>Transport</option>
+                                <option value='day_boarding'>
+                                  Day Boarding
                                 </option>
-                                <option value='Kiddie Rides'>
-                                  Kiddie Rides
-                                </option>
-                                <option value='Soft Pay Area'>
+                                {/* <option value='Soft Pay Area'>
                                   Soft Pay Area
                                 </option>
                                 <option value='Swings/Slides'>
                                   Swings/Slides
                                 </option>
                                 <option value='Trampoline'>Trampoline</option>
-                                <option value='Zip-line'>Zip-line</option>
+                                <option value='Zip-line'>Zip-line</option> */}
                               </select>
                             </div>
                           </div>
