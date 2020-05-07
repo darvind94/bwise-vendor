@@ -60,6 +60,23 @@ async function getAllPreSchools() {
   return result.json();
 }
 
-export { addPreschool, getAllPreSchools };
+async function addPlayArea(data) {
+  const formData = new FormData();
+
+  for (let key in data) {
+    formData.append(key, data[key]);
+  }
+
+  let result = await fetch(config.register + 'playarea', {
+    method: 'POST',
+    mode: 'cors',
+    headers: { 'x-auth-token': token },
+    body: formData,
+  });
+  console.log('Sucess');
+  return result.json();
+}
+
+export { addPreschool, getAllPreSchools, addPlayArea };
 
 export default FetchCall;

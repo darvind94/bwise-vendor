@@ -237,10 +237,12 @@ class left_sidebar extends React.Component {
                       Events
                     </a>
                   </li>
-                  {/* <li><a href="/playareas"
-                                        className={playAreas ? 'active' : ''}
-                                    >Play Areas</a></li>
-                                    <li><a href="/seasonalcamp"
+                  <li>
+                    <a href='/playareas' className={playAreas ? 'active' : ''}>
+                      Play Areas
+                    </a>
+                  </li>
+                  {/* <li><a href="/seasonalcamp"
                                         className={SeasonalCamp ? 'active' : ''}
                                     >Seasonal Camps</a></li>
                                     <li><a href="/creativeactivities"
