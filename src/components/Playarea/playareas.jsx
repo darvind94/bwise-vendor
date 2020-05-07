@@ -14,12 +14,16 @@ class PlayAreas extends Component {
     };
   }
   componentDidMount() {
+    this.getData();
+  }
+  getData() {
     getAllPlayareas()
       .then((res) => this.setState({ playareaList: res.data, error: false }))
       .catch((error) => {
         this.setState({ error });
       });
   }
+
   UNSAFE_componentWillMount() {}
   componentDidUpdate() {
     window.jQuery('.selectpicker').selectpicker('refresh');
