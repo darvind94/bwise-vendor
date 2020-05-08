@@ -47,6 +47,7 @@ class Schools extends Component {
       isrefund: '',
       google_location: '',
       school_timimg: '10am to 4pm',
+      country: '',
     };
   }
   componentDidMount() {}
@@ -197,6 +198,10 @@ class Schools extends Component {
     this.clearValidationErr('isrefund');
   };
 
+  handleChange = (e) => {
+    this.setState({ [e.target.name]: e.target.value });
+  };
+
   showValidationErr(elm, msg) {
     this.setState((prevState) => ({
       errors: [...prevState.errors, { elm, msg }],
@@ -288,6 +293,7 @@ class Schools extends Component {
         location: this.state.location,
         pincode: this.state.pincode,
         address: this.state.address,
+        country: this.state.country,
         schoolType: schoolType,
         classification: Classification,
         board_of_education: board_of_edu,
@@ -302,7 +308,7 @@ class Schools extends Component {
         No_of_Students: this.state.No_of_Students,
         Source: this.state.Source,
         rating: this.state.rating,
-        aminities: amenities,
+        facilities: amenities,
         avg_anual_fee: this.state.avg_fees,
         other_fee: this.state.other_fees,
         addmission_fee: this.state.admission_fees,
@@ -617,6 +623,7 @@ class Schools extends Component {
                               Owner Name<span className="astrick">*</span>
                             </label>
                             <input
+                              required
                               type="text"
                               className="form-control"
                               name="owner_name"
@@ -632,6 +639,7 @@ class Schools extends Component {
                               School Name <span className="astrick">*</span>
                             </label>
                             <input
+                              required
                               type="text"
                               name="school_name"
                               value={this.state.school_name}
@@ -654,6 +662,7 @@ class Schools extends Component {
                               Email Id<span className="astrick">*</span>
                             </label>
                             <input
+                              required
                               type="text"
                               name="email_id"
                               value={this.state.email_id}
@@ -669,6 +678,7 @@ class Schools extends Component {
                               Phone Number<span className="astrick">*</span>
                             </label>
                             <input
+                              required
                               type="text"
                               name="phone_no"
                               value={this.state.phone_no}
@@ -684,6 +694,7 @@ class Schools extends Component {
                               Landline Number<span className="astrick">*</span>
                             </label>
                             <input
+                              required
                               type="text"
                               name="landline_no"
                               value={this.state.landline_no}
@@ -699,6 +710,7 @@ class Schools extends Component {
                               Fax Number<span className="astrick">*</span>
                             </label>
                             <input
+                              required
                               type="text"
                               name="fax_no"
                               value={this.state.fax_no}
@@ -714,6 +726,7 @@ class Schools extends Component {
                               Website<span className="astrick">*</span>
                             </label>
                             <input
+                              required
                               type="text"
                               name="website"
                               value={this.state.website}
@@ -729,6 +742,7 @@ class Schools extends Component {
                               State<span className="astrick">*</span>
                             </label>
                             <input
+                              required
                               type="text"
                               name="state"
                               value={this.state.state}
@@ -744,6 +758,7 @@ class Schools extends Component {
                               Location<span className="astrick">*</span>
                             </label>
                             <input
+                              required
                               type="text"
                               name="location"
                               value={this.state.location}
@@ -756,9 +771,23 @@ class Schools extends Component {
                           </div>
                           <div className="form-group col-md-4">
                             <label>
+                              Country<span className="astrick">*</span>
+                            </label>
+                            <input
+                              required
+                              type="text"
+                              name="country"
+                              value={this.state.country}
+                              onChange={this.handleChange}
+                              className="form-control"
+                            />
+                          </div>
+                          <div className="form-group col-md-4">
+                            <label>
                               Pincode<span className="astrick">*</span>
                             </label>
                             <input
+                              required
                               type="text"
                               name="pincode"
                               value={this.state.pincode}
@@ -774,6 +803,7 @@ class Schools extends Component {
                               Address<span className="astrick">*</span>
                             </label>
                             <input
+                              required
                               type="text"
                               name="address"
                               value={this.state.address}
@@ -789,6 +819,7 @@ class Schools extends Component {
                               About the School<span className="astrick">*</span>
                             </label>
                             <input
+                              required
                               type="text"
                               name="about"
                               value={this.state.about}
@@ -805,6 +836,7 @@ class Schools extends Component {
                               <span className="astrick">*</span>
                             </label>
                             <input
+                              required
                               type="text"
                               name="iframe"
                               value={this.state.iframe}
@@ -834,7 +866,6 @@ class Schools extends Component {
                                 className="form-control selectpicker"
                               >
                                 <option
-                                  key="1"
                                   id="1"
                                   data-id="1"
                                   data-status="1"
@@ -843,7 +874,6 @@ class Schools extends Component {
                                   Government{' '}
                                 </option>
                                 <option
-                                  key="1"
                                   id="1"
                                   data-id="1"
                                   data-status="1"
@@ -870,7 +900,6 @@ class Schools extends Component {
                                 className="form-control selectpicker"
                               >
                                 <option
-                                  key="1"
                                   data-status="1"
                                   data-id="1"
                                   value="co-ed"
@@ -899,7 +928,6 @@ class Schools extends Component {
                                 className="form-control selectpicker"
                               >
                                 <option
-                                  key="1"
                                   id="1"
                                   data-status="1"
                                   data-id="1"
@@ -929,7 +957,6 @@ class Schools extends Component {
                                   className="form-control selectpicker"
                                 >
                                   <option
-                                    key="1"
                                     data-status="1"
                                     data-id="1"
                                     value="Nursery"
@@ -957,7 +984,6 @@ class Schools extends Component {
                                   className="form-control selectpicker"
                                 >
                                   <option
-                                    key="1"
                                     data-status="1"
                                     data-id="1"
                                     value="Nursery"
@@ -987,12 +1013,7 @@ class Schools extends Component {
                                 onChange={this.handleTimingFrom}
                                 className="form-control selectpicker"
                               >
-                                <option
-                                  key="1"
-                                  data-status="1"
-                                  data-id="1"
-                                  value="1"
-                                >
+                                <option data-status="1" data-id="1" value="1">
                                   9.30Am - 5.00PM{' '}
                                 </option>
                               </select>
@@ -1014,7 +1035,6 @@ class Schools extends Component {
                                 className="form-control selectpicker"
                               >
                                 <option
-                                  key="1"
                                   data-status="1"
                                   data-id="1"
                                   value="Cash/Cheque"
@@ -1036,6 +1056,7 @@ class Schools extends Component {
                               School Logo<span className="astrick">*</span>
                             </label>
                             <input
+                              required
                               type="file"
                               value={this.state.logo}
                               onChange={this.handleLogo}
@@ -1055,12 +1076,7 @@ class Schools extends Component {
                                 onChange={this.handleMinAge}
                                 className="form-control selectpicker"
                               >
-                                <option
-                                  key="1"
-                                  data-status="1"
-                                  data-id="1"
-                                  value="2"
-                                >
+                                <option data-status="1" data-id="1" value="2">
                                   2 Years
                                 </option>
                                 <option value="3">3 Years</option>
@@ -1083,7 +1099,6 @@ class Schools extends Component {
                                 className="form-control selectpicker"
                               >
                                 <option
-                                  key="1"
                                   data-status="1"
                                   data-id="1"
                                   value="english"
@@ -1105,6 +1120,7 @@ class Schools extends Component {
                               <span className="astrick">*</span>
                             </label>
                             <input
+                              required
                               type="text"
                               name="cus-name"
                               value={this.state.estyear}
@@ -1152,6 +1168,7 @@ class Schools extends Component {
                               <span className="astrick">*</span>
                             </label>
                             <input
+                              required
                               type="number"
                               name="cus-name"
                               value={this.state.avg_fees}
@@ -1168,6 +1185,7 @@ class Schools extends Component {
                               Other Fees <span className="astrick">*</span>
                             </label>
                             <input
+                              required
                               type="text"
                               name="other_fees"
                               value={this.state.other_fees}
@@ -1183,6 +1201,7 @@ class Schools extends Component {
                               Admission Fees <span className="astrick">*</span>
                             </label>
                             <input
+                              required
                               type="text"
                               name="admission_fees"
                               value={this.state.admission_fees}
@@ -1200,12 +1219,14 @@ class Schools extends Component {
                             </label>
                             <br />
                             <input
+                              required
                               type="radio"
                               name="isrefund"
                               onClick={this.handleIsRefund}
                             />
                             Yes&nbsp;&nbsp;
                             <input
+                              required
                               type="radio"
                               name="isrefund"
                               onClick={this.handleIsRefund}
@@ -1228,6 +1249,7 @@ class Schools extends Component {
                               Admission Link <span className="astrick">*</span>
                             </label>
                             <input
+                              required
                               type="text"
                               name="admission_link"
                               value={this.state.admission_link}
@@ -1243,6 +1265,7 @@ class Schools extends Component {
                               Processing Fees <span className="astrick">*</span>
                             </label>
                             <input
+                              required
                               type="text"
                               name="processing_fees"
                               value={this.state.processing_fees}
@@ -1264,7 +1287,6 @@ class Schools extends Component {
                                 data-live-search="true"
                               >
                                 <option
-                                  key="1"
                                   data-status="1"
                                   data-id="1"
                                   value="Birth Certificate"
@@ -1332,6 +1354,7 @@ class Schools extends Component {
                               Banner Images <span className="astrick">*</span>
                             </label>
                             <input
+                              required
                               type="file"
                               name="banner_img"
                               value={this.state.banner_img}
@@ -1347,6 +1370,7 @@ class Schools extends Component {
                               Gallery Images <span className="astrick">*</span>
                             </label>
                             <input
+                              required
                               type="file"
                               name="gallery_img"
                               value={this.state.gallery_img}
