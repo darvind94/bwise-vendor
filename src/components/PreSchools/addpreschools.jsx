@@ -19,6 +19,7 @@ class Schools extends Component {
       website: '',
       state: '',
       location: '',
+      country: '',
       pincode: '',
       address: '',
       about_school: '',
@@ -186,8 +187,9 @@ class Schools extends Component {
       .map((item) => item.value)
       .join(', ');
 
-    let facilities = window.document
-      .querySelectorAll('#facilities option:checked')
+    let facilities = Array.from(
+      window.document.querySelectorAll('#facilities option:checked')
+    )
       .map((item) => item.value)
       .join(', ');
 
@@ -431,6 +433,7 @@ class Schools extends Component {
                               Owner Name<span className="astrick">*</span>
                             </label>
                             <input
+                              required
                               type="text"
                               className="form-control"
                               name="ownerName"
@@ -446,6 +449,7 @@ class Schools extends Component {
                               School Name <span className="astrick">*</span>
                             </label>
                             <input
+                              required
                               type="text"
                               name="schoolName"
                               value={this.state.schoolName}
@@ -468,6 +472,7 @@ class Schools extends Component {
                               Email Id<span className="astrick">*</span>
                             </label>
                             <input
+                              required
                               type="text"
                               name="email_id"
                               value={this.state.email_id}
@@ -483,6 +488,7 @@ class Schools extends Component {
                               Phone Number<span className="astrick">*</span>
                             </label>
                             <input
+                              required
                               type="text"
                               name="phone_number"
                               value={this.state.phone_number}
@@ -498,6 +504,7 @@ class Schools extends Component {
                               Landline Number<span className="astrick">*</span>
                             </label>
                             <input
+                              required
                               type="text"
                               name="landline_number"
                               value={this.state.landline_number}
@@ -513,6 +520,7 @@ class Schools extends Component {
                               Fax Number<span className="astrick">*</span>
                             </label>
                             <input
+                              required
                               type="text"
                               name="fax_number"
                               value={this.state.fax_number}
@@ -528,6 +536,7 @@ class Schools extends Component {
                               Website<span className="astrick">*</span>
                             </label>
                             <input
+                              required
                               type="text"
                               name="website"
                               value={this.state.website}
@@ -543,6 +552,7 @@ class Schools extends Component {
                               State<span className="astrick">*</span>
                             </label>
                             <input
+                              required
                               type="text"
                               name="state"
                               value={this.state.state}
@@ -558,6 +568,7 @@ class Schools extends Component {
                               Location<span className="astrick">*</span>
                             </label>
                             <input
+                              required
                               type="text"
                               name="location"
                               value={this.state.location}
@@ -573,6 +584,7 @@ class Schools extends Component {
                               Pincode<span className="astrick">*</span>
                             </label>
                             <input
+                              required
                               type="text"
                               name="pincode"
                               value={this.state.pincode}
@@ -588,6 +600,7 @@ class Schools extends Component {
                               Address<span className="astrick">*</span>
                             </label>
                             <input
+                              required
                               type="text"
                               name="address"
                               value={this.state.address}
@@ -600,10 +613,27 @@ class Schools extends Component {
                           </div>
                           <div className="form-group col-md-4">
                             <label>
-                              about_school the School
+                              Country<span className="astrick">*</span>
+                            </label>
+                            <input
+                              required
+                              type="text"
+                              name="country"
+                              value={this.state.location}
+                              onChange={this.handleChange}
+                              className="form-control"
+                            />
+                            <small className="alert-msg text-danger">
+                              {locationErr ? locationErr : ''}
+                            </small>
+                          </div>
+                          <div className="form-group col-md-4">
+                            <label>
+                              About the School
                               <span className="astrick">*</span>
                             </label>
                             <input
+                              required
                               type="text"
                               name="about_school"
                               value={this.state.about_school}
@@ -616,10 +646,11 @@ class Schools extends Component {
                           </div>
                           <div className="form-group col-md-4">
                             <label>
-                              Google Location(google_location)
+                              Google Location(iframe link)
                               <span className="astrick">*</span>
                             </label>
                             <input
+                              required
                               type="text"
                               name="google_location"
                               value={this.state.google_location}
@@ -647,7 +678,6 @@ class Schools extends Component {
                                 value={this.state.schoolType}
                               >
                                 <option
-                                  key="1"
                                   id="1"
                                   data-id="1"
                                   data-status="1"
@@ -656,7 +686,6 @@ class Schools extends Component {
                                   Day Care{' '}
                                 </option>
                                 <option
-                                  key="1"
                                   id="1"
                                   data-id="1"
                                   data-status="1"
@@ -665,7 +694,6 @@ class Schools extends Component {
                                   Play Group{' '}
                                 </option>
                                 <option
-                                  key="1"
                                   id="1"
                                   data-id="1"
                                   data-status="1"
@@ -674,7 +702,6 @@ class Schools extends Component {
                                   Nursery{' '}
                                 </option>
                                 <option
-                                  key="1"
                                   id="1"
                                   data-id="1"
                                   data-status="1"
@@ -712,7 +739,7 @@ class Schools extends Component {
                               </select>
                               <br />
                               <small className="alert-msg text-danger">
-                                {amenitiesErr ? amenitiesErr : ''}
+                                {/* {amenitiesErr ? amenitiesErr : ''} */}
                               </small>
                             </div>
                           </div>
@@ -821,6 +848,7 @@ class Schools extends Component {
                               <span className="astrick">*</span>
                             </label>
                             <input
+                              required
                               type="text"
                               name="number_of_teachers"
                               value={this.state.number_of_teachers}
@@ -841,6 +869,7 @@ class Schools extends Component {
                               <span className="astrick">*</span>
                             </label>
                             <input
+                              required
                               type="text"
                               name="establishment_Year"
                               value={this.state.establishment_Year}
@@ -859,7 +888,8 @@ class Schools extends Component {
                               <span className="astrick">*</span>
                             </label>
                             <input
-                              type="text"
+                              required
+                              type="number"
                               name="avg_anual_fee"
                               value={this.state.avg_anual_fee}
                               onChange={this.handleAvgFees}
@@ -875,6 +905,7 @@ class Schools extends Component {
                               Other Fees <span className="astrick">*</span>
                             </label>
                             <input
+                              required
                               type="text"
                               name="other_fee"
                               value={this.state.other_fee}
@@ -890,6 +921,7 @@ class Schools extends Component {
                               Admission Fees <span className="astrick">*</span>
                             </label>
                             <input
+                              required
                               type="text"
                               name="addmission_fee"
                               value={this.state.addmission_fee}
@@ -907,12 +939,14 @@ class Schools extends Component {
                             </label>
                             <br />
                             <input
+                              required
                               type="radio"
                               name="isrefund"
                               onChange={this.handleIsrefund}
                             />
                             Yes&nbsp;&nbsp;
                             <input
+                              required
                               type="radio"
                               name="isrefund"
                               onChange={this.handleIsrefund}
@@ -936,6 +970,7 @@ class Schools extends Component {
                               Admission Link <span className="astrick">*</span>
                             </label>
                             <input
+                              required
                               type="text"
                               name="admission_link"
                               value={this.state.admission_link}
@@ -951,6 +986,7 @@ class Schools extends Component {
                               Processing Fees <span className="astrick">*</span>
                             </label>
                             <input
+                              required
                               type="text"
                               name="processing_fee"
                               value={this.state.processing_fee}
@@ -1022,6 +1058,7 @@ class Schools extends Component {
                               Banner Images <span className="astrick">*</span>
                             </label>
                             <input
+                              required
                               type="file"
                               name="banner_img"
                               value={this.state.banner_img}
@@ -1037,6 +1074,7 @@ class Schools extends Component {
                               Gallery Images <span className="astrick">*</span>
                             </label>
                             <input
+                              required
                               type="file"
                               name="gallery_img"
                               value={this.state.gallery_img}
