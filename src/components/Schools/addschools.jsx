@@ -302,7 +302,7 @@ class Schools extends Component {
         No_of_Students: this.state.No_of_Students,
         Source: this.state.Source,
         rating: this.state.rating,
-        aminities: amenities,
+        facilities: amenities,
         avg_anual_fee: this.state.avg_fees,
         other_fee: this.state.other_fees,
         addmission_fee: this.state.admission_fees,

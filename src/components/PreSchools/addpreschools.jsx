@@ -186,6 +186,11 @@ class Schools extends Component {
       .map((item) => item.value)
       .join(', ');
 
+    let facilities = window.document
+      .querySelectorAll('#facilities option:checked')
+      .map((item) => item.value)
+      .join(', ');
+
     const data = {
       ...this.state,
       opening_timimg:
@@ -200,7 +205,7 @@ class Schools extends Component {
       this.state.processing_fee !== ''
     ) {
       console.log(this.state, required_document);
-      addPreschool({ ...data, required_document }).then((res) =>
+      addPreschool({ ...data, required_document, facilities }).then((res) =>
         this.props.history.push('/preschoolslist')
       );
     } else {
@@ -387,369 +392,420 @@ class Schools extends Component {
     }
     return (
       <React.Fragment>
-        <div className='container-fluid'>
-          <div className='row'>
+        <div className="container-fluid">
+          <div className="row">
             <LeftSidebar></LeftSidebar>
-            <div className='menu-close visible-xs'>&nbsp;</div>
-            <div className='main-wrap col-md-12 col-xs-12 pad-r-no'>
+            <div className="menu-close visible-xs">&nbsp;</div>
+            <div className="main-wrap col-md-12 col-xs-12 pad-r-no">
               <Topbar></Topbar>
-              <div className='col-md-12 col-xs-12 mar-top visible-xs'>
-                <a href='#' className='back'>
+              <div className="col-md-12 col-xs-12 mar-top visible-xs">
+                <a href="#" className="back">
                   <img
-                    src='../assets/images/back-arrow-blue.svg'
-                    alt='back_icon'
+                    src="../assets/images/back-arrow-blue.svg"
+                    alt="back_icon"
                   />
                 </a>
-                <span className='page-title'>Add Schools</span>
+                <span className="page-title">Add Schools</span>
               </div>
 
-              <div className='content-top col-md-12 col-xs-12'>
+              <div className="content-top col-md-12 col-xs-12">
                 <h3>Schools Info</h3>
                 {/* <ul className="nav nav-pills transparent">
                                     <li className="active"><a data-toggle="pill" href="#company-info">Play Area Info</a></li>
                                 </ul> */}
               </div>
 
-              <div className='main-content col-md-12 col-xs-12'>
-                <div className='content-sec col-md-12 col-xs-12 pad-no mar-t-no'>
-                  <div className='tab-content'>
-                    <div id='company-info' className='tab-pane fade in active'>
+              <div className="main-content col-md-12 col-xs-12">
+                <div className="content-sec col-md-12 col-xs-12 pad-no mar-t-no">
+                  <div className="tab-content">
+                    <div id="company-info" className="tab-pane fade in active">
                       <form
-                        method='post'
+                        method="post"
                         onSubmit={this.handleSubmit}
-                        autoComplete='off'
-                        className='custom-form invoice-form col-md-12 col-xs-12 legend-form pad-no'
+                        autoComplete="off"
+                        className="custom-form invoice-form col-md-12 col-xs-12 legend-form pad-no"
                       >
-                        <div className='row'>
-                          <div className='form-group col-md-4'>
+                        <div className="row">
+                          <div className="form-group col-md-4">
                             <label>
-                              Owner Name<span className='astrick'>*</span>
+                              Owner Name<span className="astrick">*</span>
                             </label>
                             <input
-                              type='text'
-                              className='form-control'
-                              name='ownerName'
+                              type="text"
+                              className="form-control"
+                              name="ownerName"
                               value={this.state.ownerName}
                               onChange={this.handleOwnerName}
                             />
-                            <small className='alert-msg text-danger'>
+                            <small className="alert-msg text-danger">
                               {ownerNameErr ? ownerNameErr : ''}
                             </small>
                           </div>
-                          <div className='form-group col-md-4'>
+                          <div className="form-group col-md-4">
                             <label>
-                              School Name <span className='astrick'>*</span>
+                              School Name <span className="astrick">*</span>
                             </label>
                             <input
-                              type='text'
-                              name='schoolName'
+                              type="text"
+                              name="schoolName"
                               value={this.state.schoolName}
                               onChange={this.handleSchoolsName}
-                              className='form-control'
+                              className="form-control"
                             />
-                            <small className='alert-msg text-danger'>
+                            <small className="alert-msg text-danger">
                               {schoolNameErr ? schoolNameErr : ''}
                             </small>
                           </div>
                         </div>
-                        <div className='row'>
-                          <div className='col-md-12 col-xs-12'>
-                            <span className='form-legend'>
+                        <div className="row">
+                          <div className="col-md-12 col-xs-12">
+                            <span className="form-legend">
                               Address Information
                             </span>
                           </div>
-                          <div className='form-group col-md-4'>
+                          <div className="form-group col-md-4">
                             <label>
-                              Email Id<span className='astrick'>*</span>
+                              Email Id<span className="astrick">*</span>
                             </label>
                             <input
-                              type='text'
-                              name='email_id'
+                              type="text"
+                              name="email_id"
                               value={this.state.email_id}
                               onChange={this.handleEmailId}
-                              className='form-control'
+                              className="form-control"
                             />
-                            <small className='alert-msg text-danger'>
+                            <small className="alert-msg text-danger">
                               {email_idErr ? email_idErr : ''}
                             </small>
                           </div>
-                          <div className='form-group col-md-4'>
+                          <div className="form-group col-md-4">
                             <label>
-                              Phone Number<span className='astrick'>*</span>
+                              Phone Number<span className="astrick">*</span>
                             </label>
                             <input
-                              type='text'
-                              name='phone_number'
+                              type="text"
+                              name="phone_number"
                               value={this.state.phone_number}
                               onChange={this.handlePhoneNo}
-                              className='form-control'
+                              className="form-control"
                             />
-                            <small className='alert-msg text-danger'>
+                            <small className="alert-msg text-danger">
                               {phone_numberErr ? phone_numberErr : ''}
                             </small>
                           </div>
-                          <div className='form-group col-md-4'>
+                          <div className="form-group col-md-4">
                             <label>
-                              Landline Number<span className='astrick'>*</span>
+                              Landline Number<span className="astrick">*</span>
                             </label>
                             <input
-                              type='text'
-                              name='landline_number'
+                              type="text"
+                              name="landline_number"
                               value={this.state.landline_number}
                               onChange={this.handleLandlineNo}
-                              className='form-control'
+                              className="form-control"
                             />
-                            <small className='alert-msg text-danger'>
+                            <small className="alert-msg text-danger">
                               {landline_numberErr ? landline_numberErr : ''}
                             </small>
                           </div>
-                          <div className='form-group col-md-4'>
+                          <div className="form-group col-md-4">
                             <label>
-                              Fax Number<span className='astrick'>*</span>
+                              Fax Number<span className="astrick">*</span>
                             </label>
                             <input
-                              type='text'
-                              name='fax_number'
+                              type="text"
+                              name="fax_number"
                               value={this.state.fax_number}
                               onChange={this.handleFaxNo}
-                              className='form-control'
+                              className="form-control"
                             />
-                            <small className='alert-msg text-danger'>
+                            <small className="alert-msg text-danger">
                               {fax_numberErr ? fax_numberErr : ''}
                             </small>
                           </div>
-                          <div className='form-group col-md-4'>
+                          <div className="form-group col-md-4">
                             <label>
-                              Website<span className='astrick'>*</span>
+                              Website<span className="astrick">*</span>
                             </label>
                             <input
-                              type='text'
-                              name='website'
+                              type="text"
+                              name="website"
                               value={this.state.website}
                               onChange={this.handleWebsite}
-                              className='form-control'
+                              className="form-control"
                             />
-                            <small className='alert-msg text-danger'>
+                            <small className="alert-msg text-danger">
                               {websiteErr ? websiteErr : ''}
                             </small>
                           </div>
-                          <div className='form-group col-md-4'>
+                          <div className="form-group col-md-4">
                             <label>
-                              State<span className='astrick'>*</span>
+                              State<span className="astrick">*</span>
                             </label>
                             <input
-                              type='text'
-                              name='state'
+                              type="text"
+                              name="state"
                               value={this.state.state}
                               onChange={this.handleState}
-                              className='form-control'
+                              className="form-control"
                             />
-                            <small className='alert-msg text-danger'>
+                            <small className="alert-msg text-danger">
                               {stateErr ? stateErr : ''}
                             </small>
                           </div>
-                          <div className='form-group col-md-4'>
+                          <div className="form-group col-md-4">
                             <label>
-                              Location<span className='astrick'>*</span>
+                              Location<span className="astrick">*</span>
                             </label>
                             <input
-                              type='text'
-                              name='location'
+                              type="text"
+                              name="location"
                               value={this.state.location}
                               onChange={this.handleLocation}
-                              className='form-control'
+                              className="form-control"
                             />
-                            <small className='alert-msg text-danger'>
+                            <small className="alert-msg text-danger">
                               {locationErr ? locationErr : ''}
                             </small>
                           </div>
-                          <div className='form-group col-md-4'>
+                          <div className="form-group col-md-4">
                             <label>
-                              Pincode<span className='astrick'>*</span>
+                              Pincode<span className="astrick">*</span>
                             </label>
                             <input
-                              type='text'
-                              name='pincode'
+                              type="text"
+                              name="pincode"
                               value={this.state.pincode}
                               onChange={this.handlePincode}
-                              className='form-control'
+                              className="form-control"
                             />
-                            <small className='alert-msg text-danger'>
+                            <small className="alert-msg text-danger">
                               {pincodeErr ? pincodeErr : ''}
                             </small>
                           </div>
-                          <div className='form-group col-md-4'>
+                          <div className="form-group col-md-4">
                             <label>
-                              Address<span className='astrick'>*</span>
+                              Address<span className="astrick">*</span>
                             </label>
                             <input
-                              type='text'
-                              name='address'
+                              type="text"
+                              name="address"
                               value={this.state.address}
                               onChange={this.handleAddress}
-                              className='form-control'
+                              className="form-control"
                             />
-                            <small className='alert-msg text-danger'>
+                            <small className="alert-msg text-danger">
                               {addressErr ? addressErr : ''}
                             </small>
                           </div>
-                          <div className='form-group col-md-4'>
+                          <div className="form-group col-md-4">
                             <label>
                               about_school the School
-                              <span className='astrick'>*</span>
+                              <span className="astrick">*</span>
                             </label>
                             <input
-                              type='text'
-                              name='about_school'
+                              type="text"
+                              name="about_school"
                               value={this.state.about_school}
                               onChange={this.handleabout_school}
-                              className='form-control'
+                              className="form-control"
                             />
-                            <small className='alert-msg text-danger'>
+                            <small className="alert-msg text-danger">
                               {about_schoolErr ? about_schoolErr : ''}
                             </small>
                           </div>
-                          <div className='form-group col-md-4'>
+                          <div className="form-group col-md-4">
                             <label>
                               Google Location(google_location)
-                              <span className='astrick'>*</span>
+                              <span className="astrick">*</span>
                             </label>
                             <input
-                              type='text'
-                              name='google_location'
+                              type="text"
+                              name="google_location"
                               value={this.state.google_location}
                               onChange={this.handlegoogle_location}
-                              className='form-control'
+                              className="form-control"
                             />
-                            <small className='alert-msg text-danger'>
+                            <small className="alert-msg text-danger">
                               {google_locationErr ? google_locationErr : ''}
                             </small>
                           </div>
                         </div>
 
-                        <div className='row'>
-                          <div className='col-md-12 col-xs-12'>
-                            <span className='form-legend'>Key Information</span>
+                        <div className="row">
+                          <div className="col-md-12 col-xs-12">
+                            <span className="form-legend">Key Information</span>
                           </div>
-                          <div className='form-group col-md-4'>
+                          <div className="form-group col-md-4">
                             <label>
-                              School type<span className='astrick'>*</span>
+                              School type<span className="astrick">*</span>
                             </label>
-                            <div className='custom-select-drop dropdown'>
+                            <div className="custom-select-drop dropdown">
                               <select
-                                className='form-control selectpicker'
+                                className="form-control selectpicker"
                                 onChange={this.handleSchoolType}
                                 value={this.state.schoolType}
                               >
                                 <option
-                                  key='1'
-                                  id='1'
-                                  data-id='Private'
-                                  value='Private'
+                                  key="1"
+                                  id="1"
+                                  data-id="1"
+                                  data-status="1"
+                                  value="day_care"
                                 >
-                                  Private
-                                </option>
-                                <option data-id='Govt' value='Govt'>
-                                  Govt
+                                  Day Care{' '}
                                 </option>
                                 <option
-                                  data-id='International'
-                                  value='International'
+                                  key="1"
+                                  id="1"
+                                  data-id="1"
+                                  data-status="1"
+                                  value="play_group"
                                 >
-                                  International
+                                  Play Group{' '}
+                                </option>
+                                <option
+                                  key="1"
+                                  id="1"
+                                  data-id="1"
+                                  data-status="1"
+                                  value="nursery"
+                                >
+                                  Nursery{' '}
+                                </option>
+                                <option
+                                  key="1"
+                                  id="1"
+                                  data-id="1"
+                                  data-status="1"
+                                  value="kinder_garden"
+                                >
+                                  Kindergarden{' '}
                                 </option>
                               </select>
                             </div>
                           </div>
-                          <div className='form-group col-md-4'>
+
+                          <div className="form-group col-md-4">
+                            <label>Amenities </label>
+                            <div className="custom-select-drop dropdown">
+                              <select
+                                name="facilities"
+                                id="facilities"
+                                className="form-control selectpicker"
+                                data-live-search="true"
+                              >
+                                {/* <option>Indoor Sports</option> */}
+                                <option value="day_boarding">
+                                  Day Boarding
+                                </option>
+                                <option value="ac_classrooms">
+                                  AC Classes
+                                </option>
+                                <option value="transportation">
+                                  Transportation
+                                </option>
+                                <option value="food_and_snacks">
+                                  Food And Snacks
+                                </option>
+                                {/* <option>Hostel</option> */}
+                              </select>
+                              <br />
+                              <small className="alert-msg text-danger">
+                                {amenitiesErr ? amenitiesErr : ''}
+                              </small>
+                            </div>
+                          </div>
+
+                          <div className="form-group col-md-4">
                             <label>
                               Board of Education
-                              <span className='astrick'>*</span>
+                              <span className="astrick">*</span>
                             </label>
-                            <div className='custom-select-drop dropdown'>
+                            <div className="custom-select-drop dropdown">
                               <select
-                                className='form-control selectpicker'
-                                name='board_of_education'
+                                className="form-control selectpicker"
+                                name="board_of_education"
                                 value={this.state.board_of_education}
                                 required
                                 onChange={this.handleChange}
                               >
                                 <option
-                                  key='1'
-                                  id='1'
-                                  data-id='1'
-                                  value='State'
+                                  key="1"
+                                  id="1"
+                                  data-id="1"
+                                  value="State"
                                 >
                                   State
                                 </option>
-                                <option value='ISCE'> ISCE</option>
-                                <option value='IB'> IB</option>
-                                <option value='CBSE'>CBSE</option>
-                                <option value='Other'>Other</option>
+                                <option value="ISCE"> ISCE</option>
+                                <option value="IB"> IB</option>
+                                <option value="CBSE">CBSE</option>
+                                <option value="Other">Other</option>
                               </select>
                             </div>
                           </div>
-                          <div className='form-group col-md-4 input-group-cus'>
+                          <div className="form-group col-md-4 input-group-cus">
                             <div>
                               <label>Opening Timing</label>
-                              <div className='custom-select-drop dropdown'>
+                              <div className="custom-select-drop dropdown">
                                 <select
-                                  className='form-control selectpicker'
+                                  className="form-control selectpicker"
                                   onChange={this.handleChange}
                                   value={this.state.opening_timimg_start}
-                                  name='opening_timimg_start'
+                                  name="opening_timimg_start"
                                 >
-                                  <option key='1' value='1.00PM'>
+                                  <option key="1" value="1.00PM">
                                     1.00PM
                                   </option>
-                                  <option value='2.00 PM'> 2.00 PM</option>
-                                  <option value='--'>--</option>
-                                  <option value='9.00 PM'>9.00 PM</option>
+                                  <option value="2.00 PM"> 2.00 PM</option>
+                                  <option value="--">--</option>
+                                  <option value="9.00 PM">9.00 PM</option>
                                 </select>
                               </div>
                             </div>
                             <div>
                               <label>&nbsp;</label>
-                              <div className='custom-select-drop dropdown'>
+                              <div className="custom-select-drop dropdown">
                                 <select
-                                  className='form-control selectpicker'
+                                  className="form-control selectpicker"
                                   onChange={this.handleChange}
                                   value={this.state.opening_timimg_end}
-                                  name='opening_timimg_end'
+                                  name="opening_timimg_end"
                                 >
-                                  <option key='1' value='1.00PM'>
+                                  <option key="1" value="1.00PM">
                                     1.00PM
                                   </option>
-                                  <option value='2.00 PM'> 2.00 PM</option>
-                                  <option value='--'>--</option>
-                                  <option value='9.00 PM'>9.00 PM</option>
+                                  <option value="2.00 PM"> 2.00 PM</option>
+                                  <option value="--">--</option>
+                                  <option value="9.00 PM">9.00 PM</option>
                                 </select>
                               </div>
                             </div>
                           </div>
-                          <div className='form-group col-md-4'>
+                          <div className="form-group col-md-4">
                             <label>
-                              Modes of Payment<span className='astrick'>*</span>
+                              Modes of Payment<span className="astrick">*</span>
                             </label>
-                            <div className='custom-select-drop dropdown'>
+                            <div className="custom-select-drop dropdown">
                               <select
                                 required
-                                name='mode_of_payment'
-                                id='modeofpayment'
+                                name="mode_of_payment"
+                                id="modeofpayment"
                                 onChange={this.handleChange}
-                                className='form-control selectpicker'
+                                className="form-control selectpicker"
                                 value={this.state.mode_of_payment}
                                 required
                               >
                                 <option
-                                  key='1'
-                                  data-status='1'
-                                  data-id='1'
-                                  value='Cash/Cheque'
+                                  key="1"
+                                  data-status="1"
+                                  data-id="1"
+                                  value="Cash/Cheque"
                                 >
                                   Cash/Cheque
                                 </option>
-                                <option value='Online Payment'>
+                                <option value="Online Payment">
                                   Online Payment
                                 </option>
                               </select>
@@ -759,241 +815,241 @@ class Schools extends Component {
                               </small> */}
                             </div>
                           </div>
-                          <div className='form-group col-md-4'>
+                          <div className="form-group col-md-4">
                             <label>
                               Number of Teacher
-                              <span className='astrick'>*</span>
+                              <span className="astrick">*</span>
                             </label>
                             <input
-                              type='text'
-                              name='number_of_teachers'
+                              type="text"
+                              name="number_of_teachers"
                               value={this.state.number_of_teachers}
                               onChange={this.handleChange}
                               required
-                              className='form-control'
+                              className="form-control"
                             />
-                            <small className='alert-msg text-danger'>
+                            <small className="alert-msg text-danger">
                               {number_of_teachersErr
                                 ? number_of_teachersErr
                                 : ''}
                             </small>
                           </div>
 
-                          <div className='form-group col-md-4'>
+                          <div className="form-group col-md-4">
                             <label>
                               Establishment Year{' '}
-                              <span className='astrick'>*</span>
+                              <span className="astrick">*</span>
                             </label>
                             <input
-                              type='text'
-                              name='establishment_Year'
+                              type="text"
+                              name="establishment_Year"
                               value={this.state.establishment_Year}
                               onChange={this.handleEstYear}
-                              className='form-control'
+                              className="form-control"
                             />
-                            <small className='alert-msg text-danger'>
+                            <small className="alert-msg text-danger">
                               {establishment_YearErr
                                 ? establishment_YearErr
                                 : ''}
                             </small>
                           </div>
-                          <div className='form-group col-md-4'>
+                          <div className="form-group col-md-4">
                             <label>
                               Average Fees(Annualy){' '}
-                              <span className='astrick'>*</span>
+                              <span className="astrick">*</span>
                             </label>
                             <input
-                              type='text'
-                              name='avg_anual_fee'
+                              type="text"
+                              name="avg_anual_fee"
                               value={this.state.avg_anual_fee}
                               onChange={this.handleAvgFees}
-                              className='form-control'
+                              className="form-control"
                               required
                             />
                             {/* <small className='alert-msg text-danger'>
                               {avg_anual_feeErr ? avg_anual_feeErr : ''}
                             </small> */}
                           </div>
-                          <div className='form-group col-md-4'>
+                          <div className="form-group col-md-4">
                             <label>
-                              Other Fees <span className='astrick'>*</span>
+                              Other Fees <span className="astrick">*</span>
                             </label>
                             <input
-                              type='text'
-                              name='other_fee'
+                              type="text"
+                              name="other_fee"
                               value={this.state.other_fee}
                               onChange={this.handleother_fee}
-                              className='form-control'
+                              className="form-control"
                             />
-                            <small className='alert-msg text-danger'>
+                            <small className="alert-msg text-danger">
                               {other_feeErr ? other_feeErr : ''}
                             </small>
                           </div>
-                          <div className='form-group col-md-4'>
+                          <div className="form-group col-md-4">
                             <label>
-                              Admission Fees <span className='astrick'>*</span>
+                              Admission Fees <span className="astrick">*</span>
                             </label>
                             <input
-                              type='text'
-                              name='addmission_fee'
+                              type="text"
+                              name="addmission_fee"
                               value={this.state.addmission_fee}
                               onChange={this.handleAdmisionFees}
-                              className='form-control'
+                              className="form-control"
                             />
-                            <small className='alert-msg text-danger'>
+                            <small className="alert-msg text-danger">
                               {addmission_feeErr ? addmission_feeErr : ''}
                             </small>
                           </div>
-                          <div className='form-group col-md-4'>
+                          <div className="form-group col-md-4">
                             <label>
                               Is Refundable (Admission Fees)
-                              <span className='astrick'>*</span>
+                              <span className="astrick">*</span>
                             </label>
                             <br />
                             <input
-                              type='radio'
-                              name='isrefund'
+                              type="radio"
+                              name="isrefund"
                               onChange={this.handleIsrefund}
                             />
                             Yes&nbsp;&nbsp;
                             <input
-                              type='radio'
-                              name='isrefund'
+                              type="radio"
+                              name="isrefund"
                               onChange={this.handleIsrefund}
                             />
                             No
                             <br />
-                            <small className='alert-msg text-danger'>
+                            <small className="alert-msg text-danger">
                               {isrefundErr ? isrefundErr : ''}
                             </small>
                           </div>
                         </div>
 
-                        <div className='row'>
-                          <div className='col-md-12 col-xs-12'>
-                            <span className='form-legend'>
+                        <div className="row">
+                          <div className="col-md-12 col-xs-12">
+                            <span className="form-legend">
                               Admission Details
                             </span>
                           </div>
-                          <div className='form-group col-md-4'>
+                          <div className="form-group col-md-4">
                             <label>
-                              Admission Link <span className='astrick'>*</span>
+                              Admission Link <span className="astrick">*</span>
                             </label>
                             <input
-                              type='text'
-                              name='admission_link'
+                              type="text"
+                              name="admission_link"
                               value={this.state.admission_link}
                               onChange={this.handleAdmissionLink}
-                              className='form-control'
+                              className="form-control"
                             />
-                            <small className='alert-msg text-danger'>
+                            <small className="alert-msg text-danger">
                               {admission_linkErr ? admission_linkErr : ''}
                             </small>
                           </div>
-                          <div className='form-group col-md-4'>
+                          <div className="form-group col-md-4">
                             <label>
-                              Processing Fees <span className='astrick'>*</span>
+                              Processing Fees <span className="astrick">*</span>
                             </label>
                             <input
-                              type='text'
-                              name='processing_fee'
+                              type="text"
+                              name="processing_fee"
                               value={this.state.processing_fee}
                               onChange={this.handleProcessingFees}
-                              className='form-control'
+                              className="form-control"
                             />
-                            <small className='alert-msg text-danger'>
+                            <small className="alert-msg text-danger">
                               {processing_feeErr ? processing_feeErr : ''}
                             </small>
                           </div>
-                          <div className='form-group col-md-4'>
+                          <div className="form-group col-md-4">
                             <label>Required Documents </label>
-                            <div className='custom-select-drop dropdown'>
+                            <div className="custom-select-drop dropdown">
                               <select
-                                name='required_document'
-                                id='req_document'
+                                name="required_document"
+                                id="req_document"
                                 // value={this.state.required_document}
                                 onChange={this.handleChange}
-                                className='form-control selectpicker'
-                                data-live-search='true'
+                                className="form-control selectpicker"
+                                data-live-search="true"
                                 multiple
                               >
                                 <option
-                                  key='1'
-                                  id='1'
-                                  data-id='1'
-                                  value='Birth Certificate'
+                                  key="1"
+                                  id="1"
+                                  data-id="1"
+                                  value="Birth Certificate"
                                 >
                                   Birth Certificate
                                 </option>
-                                <option value='Aadhar Card'>Aadhar Card</option>
-                                <option value='Residential Proof'>
+                                <option value="Aadhar Card">Aadhar Card</option>
+                                <option value="Residential Proof">
                                   Residential Proof
                                 </option>
-                                <option value='Immunization Certficate'>
+                                <option value="Immunization Certficate">
                                   Immunization Certficate
                                 </option>
-                                <option value='Passport Size Photos'>
+                                <option value="Passport Size Photos">
                                   Passport Size Photos
                                 </option>
                               </select>
                               <br />
-                              <small className='alert-msg text-danger'>
+                              <small className="alert-msg text-danger">
                                 {required_documentErr
                                   ? required_documentErr
                                   : ''}
                               </small>
                             </div>
                           </div>
-                          <div className='form-group col-md-4'>
+                          <div className="form-group col-md-4">
                             <label>Admission Process</label>
                             <textarea
-                              name='admission_process'
+                              name="admission_process"
                               value={this.state.admission_process}
                               onChange={this.handleAdmissionProcess}
-                              className='form-control'
+                              className="form-control"
                             ></textarea>
-                            <small className='alert-msg text-danger'>
+                            <small className="alert-msg text-danger">
                               {admission_processErr ? admission_processErr : ''}
                             </small>
                           </div>
                         </div>
-                        <div className='row'>
-                          <div className='col-md-12 col-xs-12'>
-                            <span className='form-legend'>Images</span>
+                        <div className="row">
+                          <div className="col-md-12 col-xs-12">
+                            <span className="form-legend">Images</span>
                           </div>
-                          <div className='form-group col-md-4'>
+                          <div className="form-group col-md-4">
                             <label>
-                              Banner Images <span className='astrick'>*</span>
+                              Banner Images <span className="astrick">*</span>
                             </label>
                             <input
-                              type='file'
-                              name='banner_img'
+                              type="file"
+                              name="banner_img"
                               value={this.state.banner_img}
                               onChange={this.handleBanner}
-                              className='form-control'
+                              className="form-control"
                             />
-                            <small className='alert-msg text-danger'>
+                            <small className="alert-msg text-danger">
                               {banner_imgErr ? banner_imgErr : ''}
                             </small>
                           </div>
-                          <div className='form-group col-md-4'>
+                          <div className="form-group col-md-4">
                             <label>
-                              Gallery Images <span className='astrick'>*</span>
+                              Gallery Images <span className="astrick">*</span>
                             </label>
                             <input
-                              type='file'
-                              name='gallery_img'
+                              type="file"
+                              name="gallery_img"
                               value={this.state.gallery_img}
                               onChange={this.handleGallery}
-                              className='form-control'
+                              className="form-control"
                             />
-                            <small className='alert-msg text-danger'>
+                            <small className="alert-msg text-danger">
                               {gallery_imgErr ? gallery_imgErr : ''}
                             </small>
                           </div>
                         </div>
-                        <div className='col-md-12 col-xs-12 btn-bdr'>
-                          <button className='btn btn-blue'>Submit</button>
+                        <div className="col-md-12 col-xs-12 btn-bdr">
+                          <button className="btn btn-blue">Submit</button>
                         </div>
                       </form>
                     </div>
