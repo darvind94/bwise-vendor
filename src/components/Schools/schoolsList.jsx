@@ -18,17 +18,17 @@ class Schools extends Component {
     this.getSchools();
   }
   componentDidMount() {
-    window.jQuery('#example1').DataTable({
-      paging: false,
-      lengthChange: false,
-      searching: true,
-      ordering: true,
-      info: true,
-      autoWidth: true,
-      oLanguage: {
-        sEmptyTable: '',
-      },
-    });
+    // window.jQuery('#example1').DataTable({
+    //   paging: false,
+    //   lengthChange: false,
+    //   searching: true,
+    //   ordering: true,
+    //   info: true,
+    //   autoWidth: true,
+    //   oLanguage: {
+    //     sEmptyTable: '',
+    //   },
+    // });
   }
   UNSAFE_componentWillMount() {}
 
@@ -58,7 +58,7 @@ class Schools extends Component {
     if (this.state.schoolList.length != 0) {
       return this.state.schoolList.map((item, i) => {
         return (
-          <tr key={item._id} className='tabledata'>
+          <tr key={item._id} className="tabledata">
             <td>{i + 1}</td>
             <td>{item.schoolName}</td>
             <td>{item.board_of_education ? item.board_of_education : '---'}</td>
@@ -66,12 +66,12 @@ class Schools extends Component {
             <td>{item.phone_no ? item.phone_no : '---'}</td>
             <td>{item.location ? item.location : '---'}</td>
             <td>
-              <span className='label label-danger'>Waiting for Apporve</span>
+              <span className="label label-danger">Waiting for Apporve</span>
             </td>
             <td style={{ textAlign: 'center' }}>
               <a href={'/schooldetails/' + item._id}>
                 {' '}
-                <i className='eye-button fa fa-eye' title='View'></i>
+                <i className="eye-button fa fa-eye" title="View"></i>
               </a>{' '}
               &nbsp;
             </td>
@@ -88,44 +88,44 @@ class Schools extends Component {
 
     return (
       <React.Fragment>
-        <div className='container-fluid'>
-          <div className='row'>
+        <div className="container-fluid">
+          <div className="row">
             <LeftSidebar></LeftSidebar>
-            <div className='menu-close visible-xs'>&nbsp;</div>
-            <div className='main-wrap col-md-12 col-xs-12 pad-r-no'>
+            <div className="menu-close visible-xs">&nbsp;</div>
+            <div className="main-wrap col-md-12 col-xs-12 pad-r-no">
               <Topbar></Topbar>
-              <div className='col-md-12 col-xs-12 mar-top visible-xs'>
-                <a href='#' className='back'>
+              <div className="col-md-12 col-xs-12 mar-top visible-xs">
+                <a href="#" className="back">
                   <img
-                    src='../assets/images/back-arrow-blue.svg'
-                    alt='back_icon'
+                    src="../assets/images/back-arrow-blue.svg"
+                    alt="back_icon"
                   />
                 </a>
-                <span className='page-title'>School List</span>
+                <span className="page-title">School List</span>
               </div>
 
-              <div className='content-top col-md-12 col-xs-12'>
-                <div className='custom-form form-inline col-md-12 col-xs-12 h-small pad-top'>
-                  <div className='row'>
-                    <div className='form-group mar-rgt'>
-                      <h4 className='fw-sbold mar-t-no'>Schools List</h4>
+              <div className="content-top col-md-12 col-xs-12">
+                <div className="custom-form form-inline col-md-12 col-xs-12 h-small pad-top">
+                  <div className="row">
+                    <div className="form-group mar-rgt">
+                      <h4 className="fw-sbold mar-t-no">Schools List</h4>
                     </div>
-                    <div className='pull-right'>
-                      <div className='dropdown menu-item'>
+                    <div className="pull-right">
+                      <div className="dropdown menu-item">
                         <button
-                          className='btn btn-green dropdown-toggle btn-arrow'
-                          data-toggle='dropdown'
-                          aria-expanded='false'
+                          className="btn btn-green dropdown-toggle btn-arrow"
+                          data-toggle="dropdown"
+                          aria-expanded="false"
                         >
-                          <i className='fa fa-plus' aria-hidden='true'></i> Add
-                          <span className='caret'></span>
+                          <i className="fa fa-plus" aria-hidden="true"></i> Add
+                          <span className="caret"></span>
                         </button>
-                        <ul className='dropdown-menu align-right'>
+                        <ul className="dropdown-menu align-right">
                           <li>
-                            <a href='/addschools'>Add</a>
+                            <a href="/addschools">Add</a>
                           </li>
                           <li>
-                            <a href='#'>Import</a>
+                            <a href="#">Import</a>
                           </li>
                         </ul>
                       </div>
@@ -134,24 +134,24 @@ class Schools extends Component {
                 </div>
               </div>
 
-              <div className='main-content col-md-12 col-xs-12'>
-                <div className='content-sec col-md-12 col-xs-12 pad-no mar-t-no'>
+              <div className="main-content col-md-12 col-xs-12">
+                <div className="content-sec col-md-12 col-xs-12 pad-no mar-t-no">
                   <table
-                    id='example1'
-                    className='table table-bordered table-striped dataTable'
-                    role='grid'
-                    aria-describedby='example1_info'
+                    id="example1"
+                    className="table table-bordered table-striped dataTable"
+                    role="grid"
+                    aria-describedby="example1_info"
                   >
                     <thead>
-                      <tr role='row'>
-                        <th className='tabledata'>S.No</th>
-                        <th className='tabledata'>Schools Name</th>
-                        <th className='tabledata'>Board</th>
-                        <th className='tabledata'>Email Id</th>
-                        <th className='tabledata'>Phone Number</th>
-                        <th className='tabledata'>Location</th>
-                        <th className='tabledata'>Status</th>
-                        <th className='tabledata'>Action</th>
+                      <tr role="row">
+                        <th className="tabledata">S.No</th>
+                        <th className="tabledata">Schools Name</th>
+                        <th className="tabledata">Board</th>
+                        <th className="tabledata">Email Id</th>
+                        <th className="tabledata">Phone Number</th>
+                        <th className="tabledata">Location</th>
+                        <th className="tabledata">Status</th>
+                        <th className="tabledata">Action</th>
                       </tr>
                     </thead>
                     <tbody>{this.renderList()}</tbody>
