@@ -723,9 +723,7 @@ class Schools extends Component {
                                 data-live-search="true"
                               >
                                 {/* <option>Indoor Sports</option> */}
-                                <option value="day_boarding">
-                                  Day Boarding
-                                </option>
+                                <option value="cctv">CCTV</option>
                                 <option value="ac_classrooms">
                                   AC Classes
                                 </option>
@@ -735,7 +733,9 @@ class Schools extends Component {
                                 <option value="food_and_snacks">
                                   Food And Snacks
                                 </option>
-                                {/* <option>Hostel</option> */}
+                                <option value="outdoor_playarea">
+                                  Outdoor Playarea
+                                </option>
                               </select>
                               <br />
                               <small className="alert-msg text-danger">
