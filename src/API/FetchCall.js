@@ -4,8 +4,7 @@ import config from './DomainName';
 // var FormData = require('form-data');
 
 const token =
-  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ2ZW5kZXIiOnsiaWQiOiI1ZWFhOWM2MjI4NTcxYjFiZDAxMDc0OTcifSwiaWF0IjoxNTg4NTg3NDMwLCJleHAiOjE1ODg5NDc0MzB9.gkKX8V7RNl_bEH8dme04b-tyXn8HGPSf1Z0HTwE53dk';
-
+  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ2ZW5kZXIiOnsiaWQiOiI1ZWFhOWM2MjI4NTcxYjFiZDAxMDc0OTcifSwiaWF0IjoxNTg4OTk5Nzk3LCJleHAiOjE1ODkzNTk3OTd9.BXgLA3w2AhC4MZCeHI-UZCMtUX3wAVGq6ggWPzNqgPY';
 class FetchCall extends Component {
   static createSchool = async (data) => {
     delete data.errors;
