@@ -74,249 +74,250 @@ class Playarea extends Component {
   render() {
     return (
       <React.Fragment>
-        <div className='container-fluid'>
-          <div className='row'>
+        <div className="container-fluid">
+          <div className="row">
             <LeftSidebar></LeftSidebar>
-            <div className='menu-close visible-xs'>&nbsp;</div>
-            <div className='main-wrap col-md-12 col-xs-12 pad-r-no'>
+            <div className="menu-close visible-xs">&nbsp;</div>
+            <div className="main-wrap col-md-12 col-xs-12 pad-r-no">
               <Topbar></Topbar>
-              <div className='col-md-12 col-xs-12 mar-top visible-xs'>
-                <a href='#' className='back'>
+              <div className="col-md-12 col-xs-12 mar-top visible-xs">
+                <a href="#" className="back">
                   <img
-                    src='../assets/images/back-arrow-blue.svg'
-                    alt='back_icon'
+                    src="../assets/images/back-arrow-blue.svg"
+                    alt="back_icon"
                   />
                 </a>
-                <span className='page-title'>Add Play Area</span>
+                <span className="page-title">Add Play Area</span>
               </div>
 
-              <div className='content-top col-md-12 col-xs-12'>
+              <div className="content-top col-md-12 col-xs-12">
                 <h3>Play Area Info</h3>
                 {/* <ul className="nav nav-pills transparent">
                                     <li className="active"><a data-toggle="pill" href="#company-info">Play Area Info</a></li>
                                 </ul> */}
               </div>
 
-              <div className='main-content col-md-12 col-xs-12'>
-                <div className='content-sec col-md-12 col-xs-12 pad-no mar-t-no'>
-                  <div className='tab-content'>
+              <div className="main-content col-md-12 col-xs-12">
+                <div className="content-sec col-md-12 col-xs-12 pad-no mar-t-no">
+                  <div className="tab-content">
                     <div
-                      id='company-info'
-                      className='tab-pane fade in active'
+                      id="company-info"
+                      className="tab-pane fade in active"
                       onSubmit={this.handleSubmit}
                     >
-                      <form className='custom-form invoice-form col-md-12 col-xs-12 legend-form pad-no'>
-                        <div className='row'>
-                          <div className='form-group col-md-4'>
+                      <form className="custom-form invoice-form col-md-12 col-xs-12 legend-form pad-no">
+                        <div className="row">
+                          <div className="form-group col-md-4">
                             <label>
-                              Name<span className='astrick'>*</span>
+                              Name<span className="astrick">*</span>
                             </label>
                             <input
                               required
-                              type='text'
-                              name='playarea_name'
+                              type="text"
+                              name="playarea_name"
                               value={this.state.playarea_name}
                               onChange={this.handleChange}
-                              className='form-control'
+                              className="form-control"
                             />
                           </div>
-                          <div className='form-group col-md-4'>
+                          <div className="form-group col-md-4">
                             <label>
-                              About Playarea <span className='astrick'>*</span>
+                              About Playarea <span className="astrick">*</span>
                             </label>
                             <input
                               required
-                              type='textarea'
-                              name='about_playarea'
+                              type="textarea"
+                              name="about_playarea"
                               value={this.state.about_playarea}
                               onChange={this.handleChange}
-                              className='form-control'
+                              className="form-control"
                             />
                           </div>
-                          <div className='form-group col-md-4'>
+                          <div className="form-group col-md-4">
                             <label>
                               No. of Support Staff{' '}
-                              <span className='astrick'>*</span>
+                              <span className="astrick">*</span>
                             </label>
                             <input
                               required
-                              type='number'
-                              name='no_of_support_staff'
+                              type="number"
+                              name="no_of_support_staff"
                               value={this.state.no_of_support_staff}
                               onChange={this.handleChange}
-                              className='form-control'
+                              className="form-control"
                             />
                           </div>
-                          <div className='form-group col-md-4'>
+                          <div className="form-group col-md-4">
                             <label>
-                              Age Group<span className='astrick'>*</span>
+                              Age Group<span className="astrick">*</span>
                             </label>
                             <input
                               required
-                              type='text'
-                              name='age_group'
+                              type="text"
+                              name="age_group"
                               value={this.state.age_group}
                               onChange={this.handleChange}
-                              placeholder='3 years to 10 years'
-                              className='form-control'
+                              placeholder="3 years to 10 years"
+                              className="form-control"
                             />
                           </div>
-                          <div className='form-group col-md-4'>
+                          <div className="form-group col-md-4">
                             <label>
-                              Price Per Hour<span className='astrick'>*</span>
+                              Price Per Hour<span className="astrick">*</span>
                             </label>
                             <input
                               required
-                              type='text'
+                              type="number"
                               value={this.state.price_per_hour}
                               onChange={this.handleChange}
-                              name='price_per_hour'
-                              className='form-control'
+                              name="price_per_hour"
+                              className="form-control"
                             />
                           </div>
-                          <div className='form-group col-md-4'>
+                          <div className="form-group col-md-4">
                             <label>
-                              Entry Fee<span className='astrick'>*</span>
+                              Entry Fee<span className="astrick">*</span>
                             </label>
                             <input
                               required
-                              type='text'
+                              type="text"
                               value={this.state.entry_fee}
                               onChange={this.handleChange}
-                              name='entry_fee'
-                              className='form-control'
+                              name="entry_fee"
+                              className="form-control"
                             />
                           </div>
-                          <div className='form-group col-md-4'>
+                          <div className="form-group col-md-4">
                             <label>
-                              Week day Rate <span className='astrick'>*</span>
+                              Week day Rate <span className="astrick">*</span>
                             </label>
                             <input
                               required
-                              type='text'
-                              name='weekday_rate'
+                              type="text"
+                              name="weekday_rate"
                               value={this.state.weekday_rate}
                               onChange={this.handleChange}
-                              className='form-control'
+                              className="form-control"
                             />
                           </div>
-                          <div className='form-group col-md-4'>
+                          <div className="form-group col-md-4">
                             <label>
-                              Weekend Rate<span className='astrick'>*</span>
+                              Weekend Rate<span className="astrick">*</span>
                             </label>
                             <input
                               required
-                              type='text'
-                              name='weekend_rate'
+                              type="text"
+                              name="weekend_rate"
                               value={this.state.weekend_rate}
                               onChange={this.handleChange}
-                              className='form-control'
+                              className="form-control"
                             />
                           </div>
-                          <div className='form-group col-md-4'>
+                          <div className="form-group col-md-4">
                             <label>
-                              Website<span className='astrick'>*</span>
+                              Website<span className="astrick">*</span>
                             </label>
                             <input
                               required
-                              type='text'
-                              name='website'
+                              type="text"
+                              name="website"
                               value={this.state.website}
                               onChange={this.handleChange}
-                              className='form-control'
+                              className="form-control"
                             />
                           </div>
-                          <div className='form-group col-md-4'>
+                          <div className="form-group col-md-4">
                             <label>
-                              Email<span className='astrick'>*</span>
+                              Email<span className="astrick">*</span>
                             </label>
                             <input
                               required
-                              type='email'
-                              name='email_id'
+                              type="email"
+                              name="email_id"
                               value={this.state.email_id}
                               onChange={this.handleChange}
-                              className='form-control'
+                              className="form-control"
                             />
                           </div>
-                          <div className='form-group col-md-4'>
+                          <div className="form-group col-md-4">
                             <label>
-                              Offers<span className='astrick'>*</span>
+                              Offers<span className="astrick">*</span>
                             </label>
                             <input
                               required
-                              type='text'
-                              name='offers'
+                              type="text"
+                              name="offers"
                               value={this.state.offers}
                               onChange={this.handleChange}
-                              className='form-control'
+                              className="form-control"
                             />
                           </div>
-                          <div className='form-group col-md-4'>
+                          <div className="form-group col-md-4">
                             <label>
-                              Play Area Type<span className='astrick'>*</span>
+                              Play Area Type<span className="astrick">*</span>
                             </label>
                             <input
                               required
-                              type='text'
-                              name='type_of_playarea'
+                              type="text"
+                              name="type_of_playarea"
                               value={this.state.type_of_playarea}
                               onChange={this.handleChange}
-                              className='form-control'
-                              placeholder='Ex: International'
+                              className="form-control"
+                              placeholder="Ex: International"
                             />
                           </div>
-                          <div className='form-group col-md-4'>
+                          <div className="form-group col-md-4">
                             <label>
-                              Offers<span className='astrick'>*</span>
+                              Offers<span className="astrick">*</span>
                             </label>
                             <input
                               required
-                              type='text'
-                              name='offers'
+                              type="text"
+                              name="offers"
                               value={this.state.offers}
                               onChange={this.handleChange}
-                              className='form-control'
+                              className="form-control"
                             />
                           </div>
-                          <div className='form-group col-md-4'>
+                          <div className="form-group col-md-4">
                             <label>
-                              Packages<span className='astrick'>*</span>
+                              Packages<span className="astrick">*</span>
                             </label>
                             <input
                               required
-                              type='text'
-                              name='packages'
+                              type="text"
+                              name="packages"
                               value={this.state.packages}
                               onChange={this.handleChange}
-                              className='form-control'
+                              className="form-control"
                             />
                           </div>
-                          <div className='form-group col-md-4'>
+                          <div className="form-group col-md-4">
                             <label>Facilities</label>
-                            <div className='custom-select-drop dropdown'>
+                            <div className="custom-select-drop dropdown">
                               <select
-                                className='form-control selectpicker'
+                                required
+                                className="form-control selectpicker"
                                 multiple
-                                name='facilities'
+                                name="facilities"
                                 onChange={this.handleSelect}
-                                data-live-search='true'
+                                data-live-search="true"
                               >
                                 <option
-                                  key='1'
-                                  id='1'
-                                  data-id='1'
-                                  value='ac_classrooms'
+                                  key="1"
+                                  id="1"
+                                  data-id="1"
+                                  value="birthday_party_venue"
                                 >
-                                  Ac Classrooms
+                                  Birthday Party Venue
                                 </option>
-                                <option value='foods_and_snacks'>
-                                  Food and Snacks
+                                <option value="cafe">Cafe</option>
+                                <option value="wifi">Wifi</option>
+                                <option value="changing_station">
+                                  Changing Station
                                 </option>
-                                <option value='transport'>Transport</option>
-                                <option value='day_boarding'>
-                                  Day Boarding
-                                </option>
+                                <option value="parking_lot">Parking lot</option>
+                                <option value="cctv">CCTV Enabled</option>
                                 {/* <option value='Soft Pay Area'>
                                   Soft Pay Area
                                 </option>
@@ -328,29 +329,30 @@ class Playarea extends Component {
                               </select>
                             </div>
                           </div>
-                          <div className='form-group col-md-4'>
+                          <div className="form-group col-md-4">
                             <label>Bonus Features</label>
-                            <div className='custom-select-drop dropdown'>
+                            <div className="custom-select-drop dropdown">
                               <select
-                                className='form-control selectpicker'
+                                required
+                                className="form-control selectpicker"
                                 multiple
                                 onChange={this.handleSelect}
-                                data-live-search='true'
+                                data-live-search="true"
                               >
                                 <option
-                                  key='1'
-                                  id='1'
-                                  data-id='1'
-                                  value='Wi-fi'
+                                  key="1"
+                                  id="1"
+                                  data-id="1"
+                                  value="Wi-fi"
                                 >
                                   Wi-fi
                                 </option>
-                                <option value='Cafe'>Cafe</option>
-                                <option value='Changing station'>
+                                <option value="Cafe">Cafe</option>
+                                <option value="Changing station">
                                   Changing station
                                 </option>
-                                <option value='Parking'>Parking</option>
-                                <option value='CCTV'>CCTV</option>
+                                <option value="Parking">Parking</option>
+                                <option value="CCTV">CCTV</option>
                               </select>
                             </div>
                           </div>
@@ -358,6 +360,7 @@ class Playarea extends Component {
                             <label>Bonus Features</label>
                             <div className='custom-select-drop dropdown'>
                               <select
+                              required
                                 className='form-control selectpicker'
                                 multiple
                                 name='bonus_features'
@@ -381,112 +384,117 @@ class Playarea extends Component {
                               className='form-control'
                             />
                           </div> */}
-                          <div className='form-group col-md-4'>
+                          <div className="form-group col-md-4">
                             <label>Book Requirement </label>
-                            <div className='custom-select-drop dropdown'>
+                            <div className="custom-select-drop dropdown">
                               <select
-                                className='form-control selectpicker'
-                                name='book_requirements'
+                                required
+                                className="form-control selectpicker"
+                                name="book_requirements"
                                 onChange={this.handleSelect}
-                                data-live-search='true'
+                                data-live-search="true"
                                 multiple
                               >
                                 <option
-                                  key='1'
-                                  id='1'
-                                  data-id='1'
-                                  value='Id Card'
+                                  key="1"
+                                  id="1"
+                                  data-id="1"
+                                  value="Id Card"
                                 >
                                   Id Card
                                 </option>
-                                <option value='Residential Proof'>
+                                <option value="Residential Proof">
                                   Residential Proof
                                 </option>
-                                <option value='Aadhar Card'>Aadhar Card</option>
+                                <option value="Aadhar Card">Aadhar Card</option>
                               </select>
                             </div>
                           </div>
-                          <div className='form-group col-md-4'>
+                          <div className="form-group col-md-4">
                             <label>Food</label>
-                            <div className='custom-select-drop dropdown'>
+                            <div className="custom-select-drop dropdown">
                               <select
-                                className='form-control selectpicker'
+                                required
+                                className="form-control selectpicker"
                                 multiple
-                                name='food'
+                                name="food"
                                 onChange={this.handleSelect}
-                                data-live-search='true'
+                                data-live-search="true"
                               >
-                                <option key='1' id='1' data-id='1' value='Veg'>
+                                <option key="1" id="1" data-id="1" value="Veg">
                                   Veg
                                 </option>
-                                <option value='Non-Veg'>Non-Veg</option>
+                                <option value="Non-Veg">Non-Veg</option>
                               </select>
                             </div>
                           </div>
-                          <div className='form-group col-md-4'>
+                          <div className="form-group col-md-4">
                             <label>
-                              Music<span className='astrick'>*</span>
+                              Music<span className="astrick">*</span>
                             </label>
                             <input
                               required
-                              type='text'
-                              name='music'
+                              type="text"
+                              name="music"
                               value={this.state.music}
                               onChange={this.handleChange}
-                              className='form-control'
+                              className="form-control"
                             />
                           </div>
-                          <div className='form-group col-md-4'>
+                          <div className="form-group col-md-4">
                             <label>Screen</label>
-                            <div className='custom-select-drop dropdown'>
+                            <div className="custom-select-drop dropdown">
                               <select
-                                className='form-control selectpicker'
+                                required
+                                className="form-control selectpicker"
                                 multiple
-                                name='screen'
+                                name="screen"
                                 onChange={this.handleSelect}
-                                data-live-search='true'
+                                data-live-search="true"
                               >
                                 <option
-                                  key='1'
-                                  id='1'
-                                  data-id='1'
-                                  value='large'
+                                  key="1"
+                                  id="1"
+                                  data-id="1"
+                                  value="large"
                                 >
                                   Large
                                 </option>
-                                <option value='large'>Small</option>
+                                <option value="large">Small</option>
                               </select>
                             </div>
                           </div>
-                          <div className='form-group col-md-4'>
+                          <div className="form-group col-md-4">
                             <label>Kids Friendly </label>
-                            <div className='custom-select-drop dropdown'>
+                            <div className="custom-select-drop dropdown">
                               <select
-                                className='form-control selectpicker'
-                                name='kids_friendly'
+                                required
+                                className="form-control selectpicker"
+                                name="kids_friendly"
                                 onChange={this.handleSelect}
-                                data-live-search='true'
+                                data-live-search="true"
                               >
-                                <option key='1' id='1' data-id='1' value='Yes'>
+                                <option key="1" id="1" data-id="1" value="Yes">
                                   Yes
                                 </option>
-                                <option value='No'>No</option>
+                                <option value="No">No</option>
                               </select>
                             </div>
                           </div>
-                          <div className='form-group col-md-4'>
+                          <div className="form-group col-md-4">
                             <label>Product & Services Offered </label>
-                            <div className='custom-select-drop dropdown'>
+                            <div className="custom-select-drop dropdown">
                               <select
-                                className='form-control selectpicker'
-                                name='products_and_service_offered'
-                                data-live-search='true'
+                                required
+                                className="form-control selectpicker"
+                                name="products_and_service_offered"
+                                data-live-search="true"
                                 onChange={this.handleSelect}
                               >
-                                <option key='1' id='1' data-id='1' value='yes'>
+                                <option key="1" id="1" data-id="1" value="yes">
                                   Yes
                                 </option>
-                                <option value='no'>No</option>
+                                <option value="no">No</option>
                               </select>
                             </div>
                           </div>
@@ -494,6 +502,7 @@ class Playarea extends Component {
                             <label>Brances </label>
                             <div className='custom-select-drop dropdown'>
                               <select
+                              required
                                 className='form-control selectpicker'
                                 multiple
                                 data-live-search='true'
@@ -505,70 +514,70 @@ class Playarea extends Component {
                               </select>
                             </div>
                           </div> */}
-                          <div className='form-group col-md-4'>
+                          <div className="form-group col-md-4">
                             <label>
-                              Branches<span className='astrick'>*</span>
+                              Branches<span className="astrick">*</span>
                             </label>
                             <input
                               required
-                              type='number'
-                              name='branches'
+                              type="text"
+                              name="branches"
                               value={this.state.branches}
                               onChange={this.handleChange}
-                              placeholder='Enter No. of Branches'
-                              className='form-control'
+                              placeholder="Enter No. of Branches"
+                              className="form-control"
                             />
                           </div>
-                          <div className='form-group col-md-4'>
+                          <div className="form-group col-md-4">
                             <label>
-                              State<span className='astrick'>*</span>
+                              State<span className="astrick">*</span>
                             </label>
                             <input
                               required
-                              type='text'
-                              name='state'
+                              type="text"
+                              name="state"
                               value={this.state.state}
                               onChange={this.handleChange}
-                              className='form-control'
+                              className="form-control"
                             />
                           </div>
-                          <div className='form-group col-md-4'>
+                          <div className="form-group col-md-4">
                             <label>
-                              Location<span className='astrick'>*</span>
+                              Location<span className="astrick">*</span>
                             </label>
                             <input
                               required
-                              type='text'
-                              name='location'
+                              type="text"
+                              name="location"
                               value={this.state.location}
                               onChange={this.handleChange}
-                              className='form-control'
+                              className="form-control"
                             />
                           </div>
-                          <div className='form-group col-md-4'>
+                          <div className="form-group col-md-4">
                             <label>
-                              Pincode<span className='astrick'>*</span>
+                              Pincode<span className="astrick">*</span>
                             </label>
                             <input
                               required
-                              type='text'
-                              name='pin_code'
+                              type="text"
+                              name="pin_code"
                               value={this.state.pin_code}
                               onChange={this.handleChange}
-                              className='form-control'
+                              className="form-control"
                             />
                           </div>
-                          <div className='form-group col-md-4'>
+                          <div className="form-group col-md-4">
                             <label>
-                              Phone Number<span className='astrick'>*</span>
+                              Phone Number<span className="astrick">*</span>
                             </label>
                             <input
                               required
-                              type='text'
-                              name='phone_number'
+                              type="text"
+                              name="phone_number"
                               onChange={this.handleChange}
                               value={this.state.phone_number}
-                              className='form-control'
+                              className="form-control"
                             />
                           </div>
                           {/* <div className='form-group col-md-4'>
@@ -581,35 +590,35 @@ class Playarea extends Component {
                               className='form-control'
                             />
                           </div> */}
-                          <div className='form-group col-md-4'>
+                          <div className="form-group col-md-4">
                             <label>
-                              Images<span className='astrick'>*</span>
+                              Images<span className="astrick">*</span>
                             </label>
                             <input
                               required
-                              type='file'
-                              name='images'
-                              className='form-control'
+                              type="file"
+                              name="images"
+                              className="form-control"
                               onChange={this.handleFile}
                             />
                           </div>
                         </div>
-                        <div className='row'>
+                        <div className="row">
                           {/* <div className="col-md-12 col-xs-12">
                                                         <span className="form-legend">Address Information</span>
                                                     </div> */}
-                          <div className='form-group col-md-4'>
+                          <div className="form-group col-md-4">
                             <label>Area</label>
                             <textarea
-                              className='form-control'
+                              className="form-control"
                               value={this.state.area}
-                              name='area'
+                              name="area"
                               onChange={this.handleChange}
                             ></textarea>
                           </div>
                         </div>
-                        <div className='col-md-12 col-xs-12 btn-bdr'>
-                          <button type='submit' className='btn btn-blue'>
+                        <div className="col-md-12 col-xs-12 btn-bdr">
+                          <button type="submit" className="btn btn-blue">
                             Submit
                           </button>
                         </div>

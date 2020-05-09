@@ -1,3 +1,6 @@
 .table-striped > tbody > tr:nth-of-type(odd).odd {
   display: none;
 }
+.capitilize {
+  text-transform: capitalize;
+}
