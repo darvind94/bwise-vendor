@@ -721,6 +721,7 @@ class Schools extends Component {
                                 id="facilities"
                                 className="form-control selectpicker"
                                 data-live-search="true"
+                                multiple
                               >
                                 {/* <option>Indoor Sports</option> */}
                                 <option value="cctv">CCTV</option>
