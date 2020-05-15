@@ -38,9 +38,12 @@ class Playarea extends Component {
       location: '',
       pin_code: '',
       images: '',
+      google_location : ''
     };
   }
-  componentDidMount() {}
+  componentDidMount() {
+    console.log(this.props);
+  }
   UNSAFE_componentWillMount() {}
   componentDidUpdate() {
     window.jQuery('.selectpicker').selectpicker('refresh');
@@ -537,6 +540,19 @@ class Playarea extends Component {
                               type="text"
                               name="state"
                               value={this.state.state}
+                              onChange={this.handleChange}
+                              className="form-control"
+                            />
+                          </div>
+                          <div className="form-group col-md-4">
+                            <label>
+                              Google Location<span className="astrick">*</span>
+                            </label>
+                            <input
+                              required
+                              type="text"
+                              name="google_location"
+                              value={this.state.google_location}
                               onChange={this.handleChange}
                               className="form-control"
                             />

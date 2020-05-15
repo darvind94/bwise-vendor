@@ -75,7 +75,7 @@ class CreativeActivities extends Component {
                                                 <th className="tabledata">S.No</th>
                                                 <th className="tabledata">Academy Name</th>
                                                 <th className="tabledata">Categories</th>
-                                                <th className="tabledata">Game Type</th>
+                                                <th className="tabledata">Activity Type</th>
                                                 <th className="tabledata">Email Id</th>
                                                 <th className="tabledata">Phone Number</th>
                                                 <th className="tabledata">Location</th>
@@ -84,6 +84,7 @@ class CreativeActivities extends Component {
                                             </tr>
                                         </thead>
                                         <tbody>
+                                        {}
                                             <tr className="tabledata">
                                                 <td>1</td>
                                                 <td>A2Z Chess Academy</td>

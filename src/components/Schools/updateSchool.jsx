@@ -1,50 +1,87 @@
 import React, { Component } from 'react';
-// import jQuery from 'jquery';
+import jQuery from 'jquery';
+
 import Topbar from '../../layouts/topbar';
 import Footer from '../../layouts/footer';
 import LeftSidebar from '../../layouts/left_side';
-import { addPreschool } from '../../API/FetchCall';
+import FetchCall from '../../API/FetchCall';
 
-class Schools extends Component {
+class UpdateSchools extends Component {
   constructor(props) {
     super(props);
     this.state = {
       errors: [],
-      ownerName: '',
-      schoolName: '',
+      schoolDetails: [],
+      owner_name: '',
+      school_name: '',
       email_id: '',
-      phone_number: '',
-      landline_number: '',
-      fax_number: '',
+      phone_no: '',
+      landline_no: '',
+      fax_no: '',
       website: '',
       state: '',
       location: '',
-      country: '',
       pincode: '',
       address: '',
-      about_school: '',
-      google_location: '',
+      about: '',
+      iframe: '',
       admission_link: '',
-      processing_fee: '',
-      required_document: '',
+      processing_fees: '',
+      req_document: '',
       admission_process: '',
       banner_img: '',
       gallery_img: '',
-      number_of_teachers: '',
-      establishment_Year: '',
-      avg_anual_fee: '',
-      other_fee: '',
-      addmission_fee: '',
+      school_type: '',
+      classification: '',
+      boardofedu: '',
+      grade: '',
+      gradeto: '',
+      timefrom: '',
+      modeofpayment: '',
+      school_logo: '',
+      minage: '',
+      inst_lang: '',
+      estyear: '',
+      amenities: '',
+      avg_fees: '',
+      other_fees: '',
+      admission_fees: '',
       isrefund: '',
-      schoolType: '',
-      board_of_education: '',
-      opening_timimg_end: '',
-      opening_timimg_start: '',
-      opening_timimg: '',
-      mode_of_payment: '',
+      google_location: '',
+      school_timimg: '10am to 4pm',
+      country: '',
     };
+    this.id = this.props.match.params.id;
+    this.getSchoolInfo = this.getSchoolInfo.bind(this);
+    this.getSchoolInfo();
+
   }
-  componentDidMount() {}
+
+  componentDidMount() {
+
+
+  }
+  async getSchoolInfo() {
+    let response = await FetchCall.getSchoolDetails(this.id);
+    console.log(response);
+    if (response) {
+      const data = response.data;
+      this.setState({ schoolDetails: data });
+      console.log('**********schoolList*****************',this.state.schoolList);
+
+    } else {
+      return <div>Error</div>;
+    }
+    // .then(res=>{
+    //     console.log("res.data",res.data);
+    //     let result = res.data[0];
+    //     this.setState({
+    //         schoolDetails : result
+    //     },()=>{
+    //         console.log("schoolDetails",this.state)
+    //     })
+    // })
+  }
   UNSAFE_componentWillMount() {}
   componentDidUpdate() {
     window.jQuery('.selectpicker').selectpicker('refresh');
@@ -52,28 +89,28 @@ class Schools extends Component {
   }
 
   handleOwnerName = (e) => {
-    this.setState({ ownerName: e.target.value });
-    this.clearValidationErr('ownerName');
+    this.setState({ owner_name: e.target.value });
+    this.clearValidationErr('owner_name');
   };
   handleSchoolsName = (e) => {
-    this.setState({ schoolName: e.target.value });
-    this.clearValidationErr('schoolName');
+    this.setState({ school_name: e.target.value });
+    this.clearValidationErr('school_name');
   };
   handleEmailId = (e) => {
     this.setState({ email_id: e.target.value });
     this.clearValidationErr('email_id');
   };
   handlePhoneNo = (e) => {
-    this.setState({ phone_number: e.target.value });
-    this.clearValidationErr('phone_number');
+    this.setState({ phone_no: e.target.value });
+    this.clearValidationErr('phone_no');
   };
   handleLandlineNo = (e) => {
-    this.setState({ landline_number: e.target.value });
-    this.clearValidationErr('landline_number');
+    this.setState({ landline_no: e.target.value });
+    this.clearValidationErr('landline_no');
   };
   handleFaxNo = (e) => {
-    this.setState({ fax_number: e.target.value });
-    this.clearValidationErr('fax_number');
+    this.setState({ fax_no: e.target.value });
+    this.clearValidationErr('fax_no');
   };
   handleWebsite = (e) => {
     this.setState({ website: e.target.value });
@@ -95,25 +132,25 @@ class Schools extends Component {
     this.setState({ address: e.target.value });
     this.clearValidationErr('address');
   };
-  handleabout_school = (e) => {
-    this.setState({ about_school: e.target.value });
-    this.clearValidationErr('about_school');
+  handleAbout = (e) => {
+    this.setState({ about: e.target.value });
+    this.clearValidationErr('about');
   };
-  handlegoogle_location = (e) => {
-    this.setState({ google_location: e.target.value });
-    this.clearValidationErr('google_location');
+  handleIframe = (e) => {
+    this.setState({ iframe: e.target.value });
+    this.clearValidationErr('iframe');
   };
   handleAdmissionLink = (e) => {
     this.setState({ admission_link: e.target.value });
     this.clearValidationErr('admission_link');
   };
   handleProcessingFees = (e) => {
-    this.setState({ processing_fee: e.target.value });
-    this.clearValidationErr('processing_fee');
+    this.setState({ processing_fees: e.target.value });
+    this.clearValidationErr('processing_fees');
   };
   handleRequiredDocment = (e) => {
-    this.setState({ required_document: e.target.value });
-    this.clearValidationErr('required_document');
+    this.setState({ req_document: e.target.value });
+    this.clearValidationErr('req_document');
   };
   handleAdmissionProcess = (e) => {
     this.setState({ admission_process: e.target.value });
@@ -127,33 +164,73 @@ class Schools extends Component {
     this.setState({ banner_img: e.target.value });
     this.clearValidationErr('banner_img');
   };
-  handlenumber_of_teachers = (e) => {
-    this.setState({ number_of_teachers: e.target.value });
-    this.clearValidationErr('number_of_teachers');
+  handleSchoolType = (e) => {
+    this.setState({ school_type: e.target.value });
+    this.clearValidationErr('school_type');
+  };
+  handleClassification = (e) => {
+    this.setState({ classification: e.target.value });
+    this.clearValidationErr('classification');
+  };
+  handleBoardOfEducation = (e) => {
+    this.setState({ boardofedu: e.target.value });
+    this.clearValidationErr('boardofedu');
+  };
+  handlegradeTo = (e) => {
+    this.setState({ gradeto: e.target.value });
+    this.clearValidationErr('gradeto');
+  };
+  handleGrade = (e) => {
+    this.setState({ grade: e.target.value });
+    this.clearValidationErr('grade');
+  };
+  handleTimingFrom = (e) => {
+    this.setState({ timefrom: e.target.value });
+    this.clearValidationErr('timefrom');
+  };
+  handleModeOfPayament = (e) => {
+    this.setState({ modeofpayment: e.target.value });
+    this.clearValidationErr('modeofpayment');
+  };
+  handleMinAge = (e) => {
+    this.setState({ minage: e.target.value });
+    this.clearValidationErr('minage');
+  };
+  handleLogo = (e) => {
+    this.setState({ school_logo: e.target.value });
+    this.clearValidationErr('school_logo');
+  };
+  handleInstLang = (e) => {
+    this.setState({ inst_lang: e.target.value });
+    this.clearValidationErr('inst_lang');
   };
   handleEstYear = (e) => {
-    this.setState({ establishment_Year: e.target.value });
-    this.clearValidationErr('establishment_Year');
+    this.setState({ estyear: e.target.value });
+    this.clearValidationErr('estyear');
+  };
+  handleAmenities = (e) => {
+    this.setState({ amenities: e.target.value });
+    this.clearValidationErr('amenities');
   };
   handleAvgFees = (e) => {
-    this.setState({ avg_anual_fee: e.target.value });
-    this.clearValidationErr('avg_anual_fee');
+    this.setState({ avg_fees: e.target.value });
+    this.clearValidationErr('avg_fees');
   };
-  handleother_fee = (e) => {
-    this.setState({ other_fee: e.target.value });
-    this.clearValidationErr('other_fee');
+  handleOtherFees = (e) => {
+    this.setState({ other_fees: e.target.value });
+    this.clearValidationErr('other_fees');
   };
-  handleAdmisionFees = (e) => {
-    this.setState({ addmission_fee: e.target.value });
-    this.clearValidationErr('addmission_fee');
+  handleAdmissionFees = (e) => {
+    this.setState({ admission_fees: e.target.value });
+    this.clearValidationErr('admission_fees');
   };
-  handleIsrefund = (e) => {
+  handleIsRefund = (e) => {
     this.setState({ isrefund: e.target.value });
     this.clearValidationErr('isrefund');
   };
 
-  handleSchoolType = (e) => {
-    this.setState({ schoolType: e.target.value });
+  handleChange = (e) => {
+    this.setState({ [e.target.name]: e.target.value });
   };
 
   showValidationErr(elm, msg) {
@@ -173,61 +250,135 @@ class Schools extends Component {
     });
   }
 
-  handleChange = (e) => {
-    this.setState({ [e.target.name]: e.target.value });
-  };
-
   handleSubmit = (e) => {
     e.preventDefault();
     // const isValid = this.isEmailValid();
-    let required_document = window.document.querySelectorAll(
-      '#req_document option:checked'
-    );
-    required_document = Array.from(required_document)
-      .map((item) => item.value)
-      .join(', ');
 
-    let facilities = Array.from(
-      window.document.querySelectorAll('#facilities option:checked')
-    )
-      .map((item) => item.value)
-      .join(', ');
+    if (this.state.owner_name !== '' && this.state.school_name !== '') {
+      let schoolType = [
+        ...window.document.querySelectorAll('#schoolType option:checked'),
+      ]
+        .map((item) => item.value)
+        .join(', ');
+      let Classification = [
+        ...window.document.querySelectorAll('#classification option:checked'),
+      ]
+        .map((item) => item.value)
+        .join(', ');
+      let board_of_edu = [
+        ...window.document.querySelectorAll('#board_of_edu option:checked'),
+      ]
+        .map((item) => item.value)
+        .join(', ');
+      let gradefrom = [
+        ...window.document.querySelectorAll('#gradefrom option:checked'),
+      ]
+        .map((item) => item.value)
+        .join(', ');
+      let gradeto = [
+        ...window.document.querySelectorAll('#gradeto option:checked'),
+      ]
+        .map((item) => item.value)
+        .join(', ');
+      let timefrom = [
+        ...window.document.querySelectorAll('#timefrom option:checked'),
+      ]
+        .map((item) => item.value)
+        .join(', ');
+      let modeofpayment = [
+        ...window.document.querySelectorAll('#modeofpayment option:checked'),
+      ]
+        .map((item) => item.value)
+        .join(', ');
+      let minage = [
+        ...window.document.querySelectorAll('#minage option:checked'),
+      ]
+        .map((item) => item.value)
+        .join(', ');
+      let inst_lang = [
+        ...window.document.querySelectorAll('#inst_lang option:checked'),
+      ]
+        .map((item) => item.value)
+        .join(', ');
+      let amenities = [
+        ...window.document.querySelectorAll('#amenities option:checked'),
+      ]
+        .map((item) => item.value)
+        .join(', ');
+      let req_document = [
+        ...window.document.querySelectorAll('#req_document option:checked'),
+      ]
+        .map((item) => item.value)
+        .join(', ');
+      let addlist = {
+        ownerName: this.state.owner_name,
+        schoolName: this.state.school_name,
+        email_id: this.state.email_id,
+        phone_number: this.state.phone_no,
+        landline_number: this.state.landline_no,
+        fax_number: this.state.fax_no,
+        website: this.state.website,
+        statecountry: this.state.country,
+        city: this.state.city,
+        state: this.state.state,
+        location: this.state.location,
+        pincode: this.state.pincode,
+        address: this.state.address,
+        country: this.state.country,
+        schoolType: schoolType,
+        classification: Classification,
+        board_of_education: board_of_edu,
+        grade: gradefrom + ' to ' + gradeto,
+        gradeto: gradeto,
+        school_timing: timefrom,
+        school_logo: this.state.school_logo,
+        min_age: minage,
+        instruction_lang: inst_lang,
+        establishment_Year: this.state.estyear,
+        No_of_Teacher: this.state.No_of_Teacher,
+        No_of_Students: this.state.No_of_Students,
+        Source: this.state.Source,
+        rating: this.state.rating,
+        facilities: amenities,
+        avg_anual_fee: this.state.avg_fees,
+        other_fee: this.state.other_fees,
+        addmission_fee: this.state.admission_fees,
+        // is_refundable: this.state.isrefund,
+        admission_link: this.state.admission_link,
+        processing_fee: this.state.processing_fees,
+        required_document: req_document,
+        admission_process: this.state.admission_process,
+        // banner_img: this.state.banner_img,
+        // gallery_img: this.state.gallery_img,
+        about_school: this.state.about,
+        google_location: this.state.iframe,
+        school_timimg: this.state.school_timimg,
+        mode_of_payment: modeofpayment,
+      };
 
-    const data = {
-      ...this.state,
-      opening_timimg:
-        this.state.opening_timimg_start +
-        ' to ' +
-        this.state.opening_timimg_end,
-    };
-
-    if (
-      this.state.ownerName !== '' &&
-      this.state.schoolName !== '' &&
-      this.state.processing_fee !== ''
-    ) {
-      console.log(this.state, required_document);
-      addPreschool({ ...data, required_document, facilities }).then((res) =>
-        this.props.history.push('/preschoolslist')
-      );
+      FetchCall.createSchool(addlist).then((res) => {
+        if (res.status === 200) {
+          this.props.history.push('schoolsList');
+        }
+      });
     } else {
-      if (this.state.ownerName === '') {
-        this.showValidationErr('ownerName', 'Enter owner name');
+      if (this.state.owner_name === '') {
+        this.showValidationErr('owner_name', 'Enter owner name');
       }
-      if (this.state.schoolName === '') {
-        this.showValidationErr('schoolName', 'Enter school name');
+      if (this.state.school_name === '') {
+        this.showValidationErr('school_name', 'Enter school name');
       }
       if (this.state.email_id === '') {
         this.showValidationErr('email_id', 'Enter email id');
       }
-      if (this.state.phone_number === '') {
-        this.showValidationErr('phone_number', 'Enter Phone No.');
+      if (this.state.phone_no === '') {
+        this.showValidationErr('phone_no', 'Enter Phone No.');
       }
-      if (this.state.landline_number === '') {
-        this.showValidationErr('landline_number', 'Enter Landline No.');
+      if (this.state.landline_no === '') {
+        this.showValidationErr('landline_no', 'Enter Landline No.');
       }
-      if (this.state.fax_number === '') {
-        this.showValidationErr('fax_number', 'Enter Fax No.');
+      if (this.state.fax_no === '') {
+        this.showValidationErr('fax_no', 'Enter Fax No.');
       }
       if (this.state.website === '') {
         this.showValidationErr('website', 'Enter Website');
@@ -244,20 +395,20 @@ class Schools extends Component {
       if (this.state.address === '') {
         this.showValidationErr('address', 'Enter Address');
       }
-      if (this.state.about_school === '') {
-        this.showValidationErr('about_school', 'Enter about_school the school');
+      if (this.state.about === '') {
+        this.showValidationErr('about', 'Enter About the school');
       }
-      if (this.state.google_location === '') {
-        this.showValidationErr('google_location', 'Enter Google location');
+      if (this.state.iframe === '') {
+        this.showValidationErr('iframe', 'Enter Google location');
       }
       if (this.state.admission_link === '') {
         this.showValidationErr('admission_link', 'Enter Admission link');
       }
-      if (this.state.processing_fee === '') {
-        this.showValidationErr('processing_fee', 'Enter Processing Fees');
+      if (this.state.processing_fees === '') {
+        this.showValidationErr('processing_fees', 'Enter Processing Fees');
       }
-      if (this.state.required_document === '') {
-        this.showValidationErr('required_document', 'Enter Required Document');
+      if (this.state.req_document === '') {
+        this.showValidationErr('req_document', 'Enter Required Document');
       }
       if (this.state.admission_process === '') {
         this.showValidationErr('admission_process', 'Enter Admission Process');
@@ -268,71 +419,112 @@ class Schools extends Component {
       if (this.state.gallery_img === '') {
         this.showValidationErr('gallery_img', 'Enter Gallery Image');
       }
-      if (this.state.number_of_teachers === '') {
-        this.showValidationErr('number_of_teachers', 'Enter No of Teacher');
+      if (this.state.school_type === '') {
+        this.showValidationErr('school_type', 'Enter School type');
       }
-      if (this.state.establishment_Year === '') {
-        this.showValidationErr('establishment_Year', 'Enter Established year');
+      if (this.state.classification === '') {
+        this.showValidationErr('classification', 'Enter classification');
       }
-      if (this.state.avg_anual_fee === '') {
-        this.showValidationErr('avg_anual_fee', 'Enter Average fees');
+      if (this.state.boardofedu === '') {
+        this.showValidationErr('boardofedu', 'Enter Board of Education');
       }
-      if (this.state.other_fee === '') {
-        this.showValidationErr('other_fee', 'Enter other fees');
+      if (this.state.grade === '') {
+        this.showValidationErr('grade', 'Enter grade from');
       }
-      if (this.state.addmission_fee === '') {
-        this.showValidationErr('addmission_fee', 'Enter Admission fees');
+      if (this.state.gradeto === '') {
+        this.showValidationErr('gradeto', 'Enter grage to');
+      }
+      if (this.state.timefrom === '') {
+        this.showValidationErr('timefrom', 'Enter Timing');
+      }
+      if (this.state.modeofpayment === '') {
+        this.showValidationErr('modeofpayment', 'Enter Mode of Payment');
+      }
+      if (this.state.school_logo === '') {
+        this.showValidationErr('school_logo', 'Select Logo');
+      }
+      if (this.state.minage === '') {
+        this.showValidationErr('minage', 'Enter Minimum Age');
+      }
+      if (this.state.inst_lang === '') {
+        this.showValidationErr('inst_lang', 'Enter Instruction Language');
+      }
+      if (this.state.estyear === '') {
+        this.showValidationErr('estyear', 'Enter Establised Year');
+      }
+      if (this.state.amenities === '') {
+        this.showValidationErr('amenities', 'Enter amenities');
+      }
+      if (this.state.avg_fees === '') {
+        this.showValidationErr('avg_fees', 'Enter Average ');
+      }
+      if (this.state.other_fees === '') {
+        this.showValidationErr('other_fees', 'Enter Other fees');
+      }
+      if (this.state.admission_fees === '') {
+        this.showValidationErr('admission_fees', 'Enter Admission fees');
       }
       if (this.state.isrefund === '') {
-        this.showValidationErr('isrefund', 'Enter Is refundable');
+        this.showValidationErr('isrefund', 'Enter Is Refund');
       }
     }
   };
   render() {
-    console.log('processing_fee', this.state.processing_fee);
-    let ownerNameErr = null,
-      schoolNameErr = null,
+    console.log('processing_fees', this.state.processing_fees);
+    const id = this.props.match.params.id;
+    let owner_nameErr = null,
+      school_nameErr = null,
       email_idErr = null,
-      phone_numberErr = null,
-      landline_numberErr = null,
-      fax_numberErr = null,
+      phone_noErr = null,
+      landline_noErr = null,
+      fax_noErr = null,
       websiteErr = null,
       stateErr = null,
       locationErr = null,
       pincodeErr = null,
       addressErr = null,
-      about_schoolErr = null,
-      google_locationErr = null,
+      aboutErr = null,
+      iframeErr = null,
       admission_linkErr = null,
-      processing_feeErr = null,
-      required_documentErr = null,
+      processing_feesErr = null,
+      req_documentErr = null,
       admission_processErr = null,
       banner_imgErr = null,
       gallery_imgErr = null;
-    let number_of_teachersErr = null,
-      establishment_YearErr = null,
-      avg_anual_feeErr = null,
-      other_feeErr = null,
-      addmission_feeErr = null,
+    let school_typeErr = null,
+      classificationErr = null,
+      boardofeduErr = null,
+      gradeErr = null,
+      gradetoErr = null,
+      timefromErr = null,
+      modeofpaymentErr = null,
+      school_logoErr = null,
+      minageErr = null,
+      inst_langErr = null,
+      estyearErr = null,
+      amenitiesErr = null,
+      avg_feesErr = null,
+      other_feesErr = null,
+      admission_feesErr = null,
       isrefundErr = null;
     for (let err of this.state.errors) {
-      if (err.elm === 'ownerName') {
-        ownerNameErr = err.msg;
+      if (err.elm === 'owner_name') {
+        owner_nameErr = err.msg;
       }
-      if (err.elm === 'schoolName') {
-        schoolNameErr = err.msg;
+      if (err.elm === 'school_name') {
+        school_nameErr = err.msg;
       }
       if (err.elm === 'email_id') {
         email_idErr = err.msg;
       }
-      if (err.elm === 'phone_number') {
-        phone_numberErr = err.msg;
+      if (err.elm === 'phone_no') {
+        phone_noErr = err.msg;
       }
-      if (err.elm === 'landline_number') {
-        landline_numberErr = err.msg;
+      if (err.elm === 'landline_no') {
+        landline_noErr = err.msg;
       }
-      if (err.elm === 'fax_number') {
-        fax_numberErr = err.msg;
+      if (err.elm === 'fax_no') {
+        fax_noErr = err.msg;
       }
       if (err.elm === 'website') {
         websiteErr = err.msg;
@@ -349,20 +541,20 @@ class Schools extends Component {
       if (err.elm === 'address') {
         addressErr = err.msg;
       }
-      if (err.elm === 'about_school') {
-        about_schoolErr = err.msg;
+      if (err.elm === 'about') {
+        aboutErr = err.msg;
       }
-      if (err.elm === 'google_location') {
-        google_locationErr = err.msg;
+      if (err.elm === 'iframe') {
+        iframeErr = err.msg;
       }
       if (err.elm === 'admission_link') {
         admission_linkErr = err.msg;
       }
-      if (err.elm === 'processing_fee') {
-        processing_feeErr = err.msg;
+      if (err.elm === 'processing_fees') {
+        processing_feesErr = err.msg;
       }
-      if (err.elm === 'required_document') {
-        required_documentErr = err.msg;
+      if (err.elm === 'req_document') {
+        req_documentErr = err.msg;
       }
       if (err.elm === 'admission_process') {
         admission_processErr = err.msg;
@@ -373,20 +565,50 @@ class Schools extends Component {
       if (err.elm === 'gallery_img') {
         gallery_imgErr = err.msg;
       }
-      if (err.elm === 'number_of_teachers') {
-        number_of_teachersErr = err.msg;
+      if (err.elm === 'school_type') {
+        school_typeErr = err.msg;
       }
-      if (err.elm === 'establishment_Year') {
-        establishment_YearErr = err.msg;
+      if (err.elm === 'classification') {
+        classificationErr = err.msg;
       }
-      if (err.elm === 'avg_anual_fee') {
-        avg_anual_feeErr = err.msg;
+      if (err.elm === 'boardofedu') {
+        boardofeduErr = err.msg;
       }
-      if (err.elm === 'other_fee') {
-        other_feeErr = err.msg;
+      if (err.elm === 'grade') {
+        gradeErr = err.msg;
       }
-      if (err.elm === 'addmission_fee') {
-        addmission_feeErr = err.msg;
+      if (err.elm === 'gradeto') {
+        gradetoErr = err.msg;
+      }
+      if (err.elm === 'timefrom') {
+        timefromErr = err.msg;
+      }
+      if (err.elm === 'modeofpayment') {
+        modeofpaymentErr = err.msg;
+      }
+      if (err.elm === 'school_logo') {
+        school_logoErr = err.msg;
+      }
+      if (err.elm === 'minage') {
+        minageErr = err.msg;
+      }
+      if (err.elm === 'inst_lang') {
+        inst_langErr = err.msg;
+      }
+      if (err.elm === 'estyear') {
+        estyearErr = err.msg;
+      }
+      if (err.elm === 'amenities') {
+        amenitiesErr = err.msg;
+      }
+      if (err.elm === 'avg_fees') {
+        avg_feesErr = err.msg;
+      }
+      if (err.elm === 'other_fees') {
+        other_feesErr = err.msg;
+      }
+      if (err.elm === 'admission_fees') {
+        admission_feesErr = err.msg;
       }
       if (err.elm === 'isrefund') {
         isrefundErr = err.msg;
@@ -394,7 +616,9 @@ class Schools extends Component {
     }
     return (
       <React.Fragment>
+
         <div className="container-fluid">
+
           <div className="row">
             <LeftSidebar></LeftSidebar>
             <div className="menu-close visible-xs">&nbsp;</div>
@@ -436,12 +660,12 @@ class Schools extends Component {
                               required
                               type="text"
                               className="form-control"
-                              name="ownerName"
-                              value={this.state.ownerName}
+                              name="owner_name"
+                              value={this.state.owner_name}
                               onChange={this.handleOwnerName}
                             />
                             <small className="alert-msg text-danger">
-                              {ownerNameErr ? ownerNameErr : ''}
+                              {owner_nameErr ? owner_nameErr : ''}
                             </small>
                           </div>
                           <div className="form-group col-md-4">
@@ -451,13 +675,13 @@ class Schools extends Component {
                             <input
                               required
                               type="text"
-                              name="schoolName"
-                              value={this.state.schoolName}
+                              name="school_name"
+                              value={this.state.school_name}
                               onChange={this.handleSchoolsName}
                               className="form-control"
                             />
                             <small className="alert-msg text-danger">
-                              {schoolNameErr ? schoolNameErr : ''}
+                              {school_nameErr ? school_nameErr : ''}
                             </small>
                           </div>
                         </div>
@@ -490,13 +714,13 @@ class Schools extends Component {
                             <input
                               required
                               type="text"
-                              name="phone_number"
-                              value={this.state.phone_number}
+                              name="phone_no"
+                              value={this.state.phone_no}
                               onChange={this.handlePhoneNo}
                               className="form-control"
                             />
                             <small className="alert-msg text-danger">
-                              {phone_numberErr ? phone_numberErr : ''}
+                              {phone_noErr ? phone_noErr : ''}
                             </small>
                           </div>
                           <div className="form-group col-md-4">
@@ -506,13 +730,13 @@ class Schools extends Component {
                             <input
                               required
                               type="text"
-                              name="landline_number"
-                              value={this.state.landline_number}
+                              name="landline_no"
+                              value={this.state.landline_no}
                               onChange={this.handleLandlineNo}
                               className="form-control"
                             />
                             <small className="alert-msg text-danger">
-                              {landline_numberErr ? landline_numberErr : ''}
+                              {landline_noErr ? landline_noErr : ''}
                             </small>
                           </div>
                           <div className="form-group col-md-4">
@@ -522,13 +746,13 @@ class Schools extends Component {
                             <input
                               required
                               type="text"
-                              name="fax_number"
-                              value={this.state.fax_number}
+                              name="fax_no"
+                              value={this.state.fax_no}
                               onChange={this.handleFaxNo}
                               className="form-control"
                             />
                             <small className="alert-msg text-danger">
-                              {fax_numberErr ? fax_numberErr : ''}
+                              {fax_noErr ? fax_noErr : ''}
                             </small>
                           </div>
                           <div className="form-group col-md-4">
@@ -581,6 +805,19 @@ class Schools extends Component {
                           </div>
                           <div className="form-group col-md-4">
                             <label>
+                              Country<span className="astrick">*</span>
+                            </label>
+                            <input
+                              required
+                              type="text"
+                              name="country"
+                              value={this.state.country}
+                              onChange={this.handleChange}
+                              className="form-control"
+                            />
+                          </div>
+                          <div className="form-group col-md-4">
+                            <label>
                               Pincode<span className="astrick">*</span>
                             </label>
                             <input
@@ -613,56 +850,38 @@ class Schools extends Component {
                           </div>
                           <div className="form-group col-md-4">
                             <label>
-                              Country<span className="astrick">*</span>
+                              About the School<span className="astrick">*</span>
                             </label>
                             <input
                               required
                               type="text"
-                              name="country"
-                              value={this.state.country}
-                              onChange={this.handleChange}
+                              name="about"
+                              value={this.state.about}
+                              onChange={this.handleAbout}
                               className="form-control"
                             />
                             <small className="alert-msg text-danger">
-                              {locationErr ? locationErr : ''}
+                              {aboutErr ? aboutErr : ''}
                             </small>
                           </div>
                           <div className="form-group col-md-4">
                             <label>
-                              About the School
+                              Google Location(Iframe)
                               <span className="astrick">*</span>
                             </label>
                             <input
                               required
                               type="text"
-                              name="about_school"
-                              value={this.state.about_school}
-                              onChange={this.handleabout_school}
+                              name="iframe"
+                              value={this.state.iframe}
+                              onChange={this.handleIframe}
                               className="form-control"
                             />
                             <small className="alert-msg text-danger">
-                              {about_schoolErr ? about_schoolErr : ''}
-                            </small>
-                          </div>
-                          <div className="form-group col-md-4">
-                            <label>
-                              Google Location(iframe link)
-                              <span className="astrick">*</span>
-                            </label>
-                            <input
-                              required
-                              type="text"
-                              name="google_location"
-                              value={this.state.google_location}
-                              onChange={this.handlegoogle_location}
-                              className="form-control"
-                            />
-                            <small className="alert-msg text-danger">
-                              {google_locationErr ? google_locationErr : ''}
+                              {iframeErr ? iframeErr : ''}
                             </small>
                           </div>
                         </div>
-
                         <div className="row">
                           <div className="col-md-12 col-xs-12">
                             <span className="form-legend">Key Information</span>
@@ -671,60 +890,295 @@ class Schools extends Component {
                             <label>
                               School type<span className="astrick">*</span>
                             </label>
-                            <div className="custom-select-drop dropdown">
+                            <div
+                              name="school_type"
+                              id="schoolType"
+                              className="custom-select-drop dropdown"
+                            >
                               <select
-                                className="form-control selectpicker"
                                 onChange={this.handleSchoolType}
-                                value={this.state.schoolType}
+                                className="form-control selectpicker"
                               >
                                 <option
                                   id="1"
                                   data-id="1"
                                   data-status="1"
-                                  value="day_care"
+                                  value="govt"
                                 >
-                                  Day Care{' '}
+                                  Government{' '}
                                 </option>
                                 <option
                                   id="1"
                                   data-id="1"
                                   data-status="1"
-                                  value="play_group"
+                                  value="private"
                                 >
-                                  Play Group{' '}
-                                </option>
-                                <option
-                                  id="1"
-                                  data-id="1"
-                                  data-status="1"
-                                  value="nursery"
-                                >
-                                  Nursery{' '}
-                                </option>
-                                <option
-                                  id="1"
-                                  data-id="1"
-                                  data-status="1"
-                                  value="kinder_garden"
-                                >
-                                  Kindergarden{' '}
+                                  Private{' '}
                                 </option>
                               </select>
+                              <br />
+                              <small className="alert-msg text-danger">
+                                {school_typeErr ? school_typeErr : ''}
+                              </small>
                             </div>
                           </div>
-
+                          <div className="form-group col-md-4">
+                            <label>
+                              Classification<span className="astrick">*</span>
+                            </label>
+                            <div className="custom-select-drop dropdown">
+                              <select
+                                name="classification"
+                                id="classification"
+                                onChange={this.handleClassification}
+                                className="form-control selectpicker"
+                              >
+                                <option
+                                  data-status="1"
+                                  data-id="1"
+                                  value="co-ed"
+                                >
+                                  Co-Ed
+                                </option>
+                                <option value="boys"> Boys</option>
+                                <option value="girls"> Girls</option>
+                              </select>
+                              <br />
+                              <small className="alert-msg text-danger">
+                                {classificationErr ? classificationErr : ''}
+                              </small>
+                            </div>
+                          </div>
+                          <div className="form-group col-md-4">
+                            <label>
+                              Board of Education
+                              <span className="astrick">*</span>
+                            </label>
+                            <div className="custom-select-drop dropdown">
+                              <select
+                                name="boardofedu"
+                                id="board_of_edu"
+                                onChange={this.handleBoardOfEducation}
+                                className="form-control selectpicker"
+                              >
+                                <option
+                                  id="1"
+                                  data-status="1"
+                                  data-id="1"
+                                  value="state"
+                                >
+                                  StateBoard
+                                </option>
+                                <option value="cbse"> CBSE</option>
+                                <option value="ib"> IB</option>
+                                <option value="icse">ICSE</option>
+                                <option value="others"> Others</option>
+                              </select>
+                              <br />
+                              <small className="alert-msg text-danger">
+                                {boardofeduErr ? boardofeduErr : ''}
+                              </small>
+                            </div>
+                          </div>
+                          <div className="form-group col-md-4 input-group-cus">
+                            <div>
+                              <label>Grade</label>
+                              <div className="custom-select-drop dropdown">
+                                <select
+                                  name="grade"
+                                  id="gradefrom"
+                                  onChange={this.handleGrade}
+                                  className="form-control selectpicker"
+                                >
+                                  <option
+                                    data-status="1"
+                                    data-id="1"
+                                    value="Nursery"
+                                  >
+                                    Nursery
+                                  </option>
+                                  <option value="Class 1"> Class 1</option>
+                                  <option value="Class 2"> Class 2</option>
+                                  <option value="--">--</option>
+                                  <option value="Class 12"> Class 12</option>
+                                </select>
+                                <br />
+                                <small className="alert-msg text-danger">
+                                  {gradeErr ? gradeErr : ''}
+                                </small>
+                              </div>
+                            </div>
+                            <div>
+                              <label>&nbsp;</label>
+                              <div className="custom-select-drop dropdown">
+                                <select
+                                  name="gradeto"
+                                  id="gradeto"
+                                  onChange={this.handlegradeTo}
+                                  className="form-control selectpicker"
+                                >
+                                  <option
+                                    data-status="1"
+                                    data-id="1"
+                                    value="Nursery"
+                                  >
+                                    Nursery
+                                  </option>
+                                  <option value="Class 1"> Class 1</option>
+                                  <option value="Class 2"> Class 2</option>
+                                  <option value="--">--</option>
+                                  <option value="Class 12"> Class 12</option>
+                                </select>
+                                <br />
+                                <small className="alert-msg text-danger">
+                                  {gradetoErr ? gradetoErr : ''}
+                                </small>
+                              </div>
+                            </div>
+                          </div>
+                          <div className="form-group col-md-4">
+                            <label>
+                              School Timing<span className="astrick">*</span>
+                            </label>
+                            <div className="custom-select-drop dropdown">
+                              <select
+                                name="timefrom"
+                                id="timefrom"
+                                onChange={this.handleTimingFrom}
+                                className="form-control selectpicker"
+                              >
+                                <option data-status="1" data-id="1" value="1">
+                                  9.30Am - 5.00PM{' '}
+                                </option>
+                              </select>
+                              <br />
+                              <small className="alert-msg text-danger">
+                                {timefromErr ? timefromErr : ''}
+                              </small>
+                            </div>
+                          </div>
+                          <div className="form-group col-md-4">
+                            <label>
+                              Modes of Payment<span className="astrick">*</span>
+                            </label>
+                            <div className="custom-select-drop dropdown">
+                              <select
+                                name="modeofpayment"
+                                id="modeofpayment"
+                                onChange={this.handleModeOfPayament}
+                                className="form-control selectpicker"
+                              >
+                                <option
+                                  data-status="1"
+                                  data-id="1"
+                                  value="Cash/Cheque"
+                                >
+                                  Cash/Cheque
+                                </option>
+                                <option key="Online Payment">
+                                  Online Payment
+                                </option>
+                              </select>
+                              <br />
+                              <small className="alert-msg text-danger">
+                                {modeofpaymentErr ? modeofpaymentErr : ''}
+                              </small>
+                            </div>
+                          </div>
+                          <div className="form-group col-md-4">
+                            <label>
+                              School Logo<span className="astrick">*</span>
+                            </label>
+                            <input
+                              required
+                              type="file"
+                              value={this.state.logo}
+                              onChange={this.handleLogo}
+                              className="form-control"
+                            />
+                            <small className="alert-msg text-danger">
+                              {school_logoErr ? school_logoErr : ''}
+                            </small>
+                          </div>
+                          <div className="form-group col-md-4">
+                            <label>Min Age of Admission</label>
+                            <div className="custom-select-drop dropdown">
+                              <select
+                                name="minage"
+                                id="minage"
+                                value={this.state.minage}
+                                onChange={this.handleMinAge}
+                                className="form-control selectpicker"
+                              >
+                                <option data-status="1" data-id="1" value="2">
+                                  2 Years
+                                </option>
+                                <option value="3">3 Years</option>
+                                <option value="4">4 Years</option>
+                              </select>
+                              <br />
+                              <small className="alert-msg text-danger">
+                                {minageErr ? minageErr : ''}
+                              </small>
+                            </div>
+                          </div>
+                          <div className="form-group col-md-4">
+                            <label>Instruction Language</label>
+                            <div className="custom-select-drop dropdown">
+                              <select
+                                name="inst_lang"
+                                id="inst_lang"
+                                value={this.state.inst_lang}
+                                onChange={this.handleInstLang}
+                                className="form-control selectpicker"
+                              >
+                                <option
+                                  data-status="1"
+                                  data-id="1"
+                                  value="english"
+                                >
+                                  English
+                                </option>
+                                <option value="tamil">Tamil</option>
+                                <option value="hindi">Hindi</option>
+                              </select>
+                              <br />
+                              <small className="alert-msg text-danger">
+                                {inst_langErr ? inst_langErr : ''}
+                              </small>
+                            </div>
+                          </div>
+                          <div className="form-group col-md-4">
+                            <label>
+                              Establishment Year{' '}
+                              <span className="astrick">*</span>
+                            </label>
+                            <input
+                              required
+                              type="text"
+                              name="cus-name"
+                              value={this.state.estyear}
+                              onChange={this.handleEstYear}
+                              className="form-control"
+                            />
+                            <small className="alert-msg text-danger">
+                              {estyearErr ? estyearErr : ''}
+                            </small>
+                          </div>
                           <div className="form-group col-md-4">
                             <label>Amenities </label>
                             <div className="custom-select-drop dropdown">
                               <select
-                                name="facilities"
-                                id="facilities"
+                                name="amenities"
+                                id="amenities"
+                                onChange={this.handleAmenities}
                                 className="form-control selectpicker"
                                 data-live-search="true"
-                                multiple
                               >
                                 {/* <option>Indoor Sports</option> */}
-                                <option value="cctv">CCTV</option>
+                                <option value="day_boarding">
+                                  Day Boarding
+                                </option>
                                 <option value="ac_classrooms">
                                   AC Classes
                                 </option>
@@ -734,154 +1188,13 @@ class Schools extends Component {
                                 <option value="food_and_snacks">
                                   Food And Snacks
                                 </option>
-                                <option value="outdoor_playarea">
-                                  Outdoor Playarea
-                                </option>
+                                {/* <option>Hostel</option> */}
                               </select>
                               <br />
                               <small className="alert-msg text-danger">
-                                {/* {amenitiesErr ? amenitiesErr : ''} */}
+                                {amenitiesErr ? amenitiesErr : ''}
                               </small>
                             </div>
-                          </div>
-
-                          <div className="form-group col-md-4">
-                            <label>
-                              Board of Education
-                              <span className="astrick">*</span>
-                            </label>
-                            <div className="custom-select-drop dropdown">
-                              <select
-                                className="form-control selectpicker"
-                                name="board_of_education"
-                                value={this.state.board_of_education}
-                                required
-                                onChange={this.handleChange}
-                              >
-                                <option
-                                  key="1"
-                                  id="1"
-                                  data-id="1"
-                                  value="State"
-                                >
-                                  State
-                                </option>
-                                <option value="ISCE"> ISCE</option>
-                                <option value="IB"> IB</option>
-                                <option value="CBSE">CBSE</option>
-                                <option value="Other">Other</option>
-                              </select>
-                            </div>
-                          </div>
-                          <div className="form-group col-md-4 input-group-cus">
-                            <div>
-                              <label>Opening Timing</label>
-                              <div className="custom-select-drop dropdown">
-                                <select
-                                  className="form-control selectpicker"
-                                  onChange={this.handleChange}
-                                  value={this.state.opening_timimg_start}
-                                  name="opening_timimg_start"
-                                >
-                                  <option key="1" value="1.00PM">
-                                    1.00PM
-                                  </option>
-                                  <option value="2.00 PM"> 2.00 PM</option>
-                                  <option value="--">--</option>
-                                  <option value="9.00 PM">9.00 PM</option>
-                                </select>
-                              </div>
-                            </div>
-                            <div>
-                              <label>&nbsp;</label>
-                              <div className="custom-select-drop dropdown">
-                                <select
-                                  className="form-control selectpicker"
-                                  onChange={this.handleChange}
-                                  value={this.state.opening_timimg_end}
-                                  name="opening_timimg_end"
-                                >
-                                  <option key="1" value="1.00PM">
-                                    1.00PM
-                                  </option>
-                                  <option value="2.00 PM"> 2.00 PM</option>
-                                  <option value="--">--</option>
-                                  <option value="9.00 PM">9.00 PM</option>
-                                </select>
-                              </div>
-                            </div>
-                          </div>
-                          <div className="form-group col-md-4">
-                            <label>
-                              Modes of Payment<span className="astrick">*</span>
-                            </label>
-                            <div className="custom-select-drop dropdown">
-                              <select
-                                required
-                                name="mode_of_payment"
-                                id="modeofpayment"
-                                onChange={this.handleChange}
-                                className="form-control selectpicker"
-                                value={this.state.mode_of_payment}
-                                required
-                              >
-                                <option
-                                  key="1"
-                                  data-status="1"
-                                  data-id="1"
-                                  value="Cash/Cheque"
-                                >
-                                  Cash/Cheque
-                                </option>
-                                <option value="Online Payment">
-                                  Online Payment
-                                </option>
-                              </select>
-                              <br />
-                              {/* <small className='alert-msg text-danger'>
-                                {modeofpaymentErr ? modeofpaymentErr : ''}
-                              </small> */}
-                            </div>
-                          </div>
-                          <div className="form-group col-md-4">
-                            <label>
-                              Number of Teacher
-                              <span className="astrick">*</span>
-                            </label>
-                            <input
-                              required
-                              type="text"
-                              name="number_of_teachers"
-                              value={this.state.number_of_teachers}
-                              onChange={this.handleChange}
-                              required
-                              className="form-control"
-                            />
-                            <small className="alert-msg text-danger">
-                              {number_of_teachersErr
-                                ? number_of_teachersErr
-                                : ''}
-                            </small>
-                          </div>
-
-                          <div className="form-group col-md-4">
-                            <label>
-                              Establishment Year{' '}
-                              <span className="astrick">*</span>
-                            </label>
-                            <input
-                              required
-                              type="text"
-                              name="establishment_Year"
-                              value={this.state.establishment_Year}
-                              onChange={this.handleEstYear}
-                              className="form-control"
-                            />
-                            <small className="alert-msg text-danger">
-                              {establishment_YearErr
-                                ? establishment_YearErr
-                                : ''}
-                            </small>
                           </div>
                           <div className="form-group col-md-4">
                             <label>
@@ -891,15 +1204,15 @@ class Schools extends Component {
                             <input
                               required
                               type="number"
-                              name="avg_anual_fee"
-                              value={this.state.avg_anual_fee}
+                              name="cus-name"
+                              value={this.state.avg_fees}
                               onChange={this.handleAvgFees}
                               className="form-control"
-                              required
+                              placeholder="Enter in K's"
                             />
-                            {/* <small className='alert-msg text-danger'>
-                              {avg_anual_feeErr ? avg_anual_feeErr : ''}
-                            </small> */}
+                            <small className="alert-msg text-danger">
+                              {avg_feesErr ? avg_feesErr : ''}
+                            </small>
                           </div>
                           <div className="form-group col-md-4">
                             <label>
@@ -908,13 +1221,13 @@ class Schools extends Component {
                             <input
                               required
                               type="text"
-                              name="other_fee"
-                              value={this.state.other_fee}
-                              onChange={this.handleother_fee}
+                              name="other_fees"
+                              value={this.state.other_fees}
+                              onChange={this.handleOtherFees}
                               className="form-control"
                             />
                             <small className="alert-msg text-danger">
-                              {other_feeErr ? other_feeErr : ''}
+                              {other_feesErr ? other_feesErr : ''}
                             </small>
                           </div>
                           <div className="form-group col-md-4">
@@ -924,13 +1237,13 @@ class Schools extends Component {
                             <input
                               required
                               type="text"
-                              name="addmission_fee"
-                              value={this.state.addmission_fee}
-                              onChange={this.handleAdmisionFees}
+                              name="admission_fees"
+                              value={this.state.admission_fees}
+                              onChange={this.handleAdmissionFees}
                               className="form-control"
                             />
                             <small className="alert-msg text-danger">
-                              {addmission_feeErr ? addmission_feeErr : ''}
+                              {admission_feesErr ? admission_feesErr : ''}
                             </small>
                           </div>
                           <div className="form-group col-md-4">
@@ -943,17 +1256,16 @@ class Schools extends Component {
                               required
                               type="radio"
                               name="isrefund"
-                              onChange={this.handleIsrefund}
+                              onClick={this.handleIsRefund}
                             />
                             Yes&nbsp;&nbsp;
                             <input
                               required
                               type="radio"
                               name="isrefund"
-                              onChange={this.handleIsrefund}
+                              onClick={this.handleIsRefund}
                             />
                             No
-                            <br />
                             <small className="alert-msg text-danger">
                               {isrefundErr ? isrefundErr : ''}
                             </small>
@@ -989,51 +1301,68 @@ class Schools extends Component {
                             <input
                               required
                               type="text"
-                              name="processing_fee"
-                              value={this.state.processing_fee}
+                              name="processing_fees"
+                              value={this.state.processing_fees}
                               onChange={this.handleProcessingFees}
                               className="form-control"
                             />
                             <small className="alert-msg text-danger">
-                              {processing_feeErr ? processing_feeErr : ''}
+                              {processing_feesErr ? processing_feesErr : ''}
                             </small>
                           </div>
                           <div className="form-group col-md-4">
                             <label>Required Documents </label>
                             <div className="custom-select-drop dropdown">
                               <select
-                                name="required_document"
+                                multiple
+                                name="req_document"
                                 id="req_document"
-                                // value={this.state.required_document}
-                                onChange={this.handleChange}
                                 className="form-control selectpicker"
                                 data-live-search="true"
-                                multiple
                               >
                                 <option
-                                  key="1"
-                                  id="1"
+                                  data-status="1"
                                   data-id="1"
                                   value="Birth Certificate"
                                 >
                                   Birth Certificate
                                 </option>
-                                <option value="Aadhar Card">Aadhar Card</option>
-                                <option value="Residential Proof">
+                                <option
+                                  key="2"
+                                  data-status="2"
+                                  data-id="2"
+                                  value="Aadhar Card"
+                                >
+                                  Aadhar Card
+                                </option>
+                                <option
+                                  key="3"
+                                  data-status="3"
+                                  data-id="3"
+                                  value="Residential Proof"
+                                >
                                   Residential Proof
                                 </option>
-                                <option value="Immunization Certficate">
+                                <option
+                                  key="4"
+                                  data-status="4"
+                                  data-id="4"
+                                  value="Immunization Certficate"
+                                >
                                   Immunization Certficate
                                 </option>
-                                <option value="Passport Size Photos">
+                                <option
+                                  key="5"
+                                  data-status="5"
+                                  data-id="5"
+                                  value=" Passport Size Photos"
+                                >
                                   Passport Size Photos
                                 </option>
                               </select>
                               <br />
                               <small className="alert-msg text-danger">
-                                {required_documentErr
-                                  ? required_documentErr
-                                  : ''}
+                                {req_documentErr ? req_documentErr : ''}
                               </small>
                             </div>
                           </div>
@@ -1104,4 +1433,4 @@ class Schools extends Component {
   }
 }
 
-export default Schools;
+export default UpdateSchools;

@@ -2,7 +2,6 @@ import React from 'react';
 import './App.css';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
-
 import Login from './components/Login/login';
 import Register from './components/Login/register';
 import Dashboard from './components/Dashboard/dashboard';
@@ -16,9 +15,12 @@ import Events from './components/Events/events';
 import AddPartyHall from './components/Events/addpartyhall';
 
 import SchoolsList from './components/Schools/schoolsList';
+import SchoolsList1 from './components/Schools/schoolsList1';
 import AddSchools from './components/Schools/addschools';
 import schoolDetails from './components/Schools/schoolDetails';
+import UpdateSchools from './components/Schools/updateSchool';
 import PreSchoolsList from './components/PreSchools/preschoolList';
+import PreSchoolDetails from './components/PreSchools/preSchoolDetails';
 import AddPreSchools from './components/PreSchools/addpreschools';
 
 import SeasonalCamp from './components/SeasonalCamp/seasonalcamplist';
@@ -41,6 +43,7 @@ import UserDetails from './components/UserInfo/userdetails';
 import VendorList from './components/VendorInfo/vendorlist';
 import VendorDetails from './components/VendorInfo/vendordetails';
 import UpdateVendor from './components/VendorInfo/updatevendor';
+import PlayAreaDetails from './components/Playarea/playAreaDetails';
 
 function App() {
   return (
@@ -55,16 +58,22 @@ function App() {
 
           <Route path="/playareas" exact component={PlayAreas} />
           <Route path="/addplayarea" exact component={AddPlayArea} />
+          <Route path="/playareadetails/:id" exact component={PlayAreaDetails}/>
+
 
           <Route path="/events" exact component={Events} />
           <Route path="/addpartyhall" exact component={AddPartyHall} />
 
           <Route path="/addschools" exact component={AddSchools} />
+          <Route path="/updateschools/:id" exact component={UpdateSchools} />
           <Route path="/schoolsList" exact component={SchoolsList} />
+          <Route path="/schoolsList1/:id" exact component={SchoolsList1} />
           <Route path="/schooldetails/:id/" exact component={schoolDetails} />
           <Route path="/preschoolslist" exact component={PreSchoolsList} />
+          <Route path="/preschooldetails/:id" exact component={PreSchoolDetails}/>
           <Route path="/addpreschool" exact component={AddPreSchools} />
-          
+
+
           <Route path="/seasonalcamp" exact component={SeasonalCamp} />
           <Route path="/addcamp" exact component={AddSeasonalCamp} />
 

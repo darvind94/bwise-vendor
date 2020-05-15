@@ -18,13 +18,13 @@ class Schools extends Component {
                 <div className="container-fluid">
                     <div className="row">
                         <div className="col-md-5 col-sm-5 login-left hidden-sm hidden-xs">
-                            {/* <h1>Welcome to B'Wise</h1>
+                            {/* <h1>Welcome to Be'Wise</h1>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p> */}
                             <div className="img-wrap"></div>
                         </div>
                         <div className="col-md-7 col-sm-12 login-right">
                             <div className="login-wrap">
-                                <div className="nav-brand"><h1>B'Wise</h1></div>
+                                <div className="nav-brand"><h1>Be'Wise</h1></div>
                                 <p className="lead">Login</p>
                                 <div className="alert-wrap hide"><p>Email Id & Password does not match</p></div>
                                 <form className="login-form" action="#">

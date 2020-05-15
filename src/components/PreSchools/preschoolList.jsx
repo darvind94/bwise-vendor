@@ -17,10 +17,40 @@ class Schools extends Component {
       this.setState({ preSchoolList: res.data });
     });
   }
-  UNSAFE_componentWillMount() {}
+  UNSAFE_componentWillMount() { }
   componentDidUpdate() {
     window.jQuery('.selectpicker').selectpicker('refresh');
     // jQuery("#currency_selected").val(4);
+  }
+  renderList() {
+    if (this.state.preSchoolList.length != 0) {
+      return this.state.preSchoolList.map((item, i) => {
+        return (
+          <tr key={item._id} className="tabledata">
+            <td>{i + 1}</td>
+            <td>{item.schoolName}</td>
+            <td>{item.board_of_education ? item.board_of_education : '---'}</td>
+            <td>{item.email_id ? item.email_id : '---'}</td>
+            <td>{item.phone_number ? item.phone_number : '---'}</td>
+            <td>{item.location ? item.location : '---'}</td>
+            <td>
+              <span className="label label-danger">Waiting for Apporve</span>
+            </td>
+            <td><button className="btn btn-info">Edit</button></td>
+            <td><button className="btn btn-danger">Delete</button></td>
+            <td style={{ textAlign: 'center' }}>
+              <a href={'/preschooldetails/' + item.vender}>
+                {' '}
+                <i className="eye-button fa fa-eye" title="View"></i>
+              </a>{' '}
+              &nbsp;
+            </td>
+          </tr>
+        );
+      });
+    } else {
+      return null;
+    }
   }
 
   render() {
@@ -28,7 +58,7 @@ class Schools extends Component {
       <React.Fragment>
         <div className='container-fluid'>
           <div className='row'>
-            <LeftSidebar></LeftSidebar>
+            <LeftSidebar />
             <div className='menu-close visible-xs'>&nbsp;</div>
             <div className='main-wrap col-md-12 col-xs-12 pad-r-no'>
               <Topbar></Topbar>
@@ -76,91 +106,32 @@ class Schools extends Component {
                 <div className='content-sec col-md-12 col-xs-12 pad-no mar-t-no'>
                   <div style={{ overflowX: 'auto' }}>
                     <table
-                      id='example1'
-                      className='table table-bordered table-striped '
-                      role='grid'
-                      aria-describedby='example1_info'
+                      id="example1"
+                      className="table table-bordered table-striped dataTable"
+                      role="grid"
+                      aria-describedby="example1_info"
                     >
                       <thead>
-                        <tr role='row'>
-                          <th className='tabledata'>S.No</th>
-                          <th className='tabledata'>Country</th>
-                          <th className='tabledata'>City</th>
+                        <tr role="row">
+                          {/* <th className="tabledata">S.No</th>
+                        <th className="tabledata">Schools Name</th>
+                        <th className="tabledata">Board</th>
+                        <th className="tabledata">Email Id</th>
+                        <th className="tabledata">Phone Number</th>
+                        <th className="tabledata">Location</th>
+                        <th className="tabledata">Status</th>
+                        <th className="tabledata">Action</th> */}
+                          <th className="tabledata">S.No</th>
+                          <th className="tabledata">School Name</th>
+                          <th className="tabledata"> board_of_education</th>
+                          <th className="tabledata">Email Id</th>
+                          <th className="tabledata">Phone Number</th>
+                          <th className="tabledata">Location</th>
+                          <th className="tabledata">Status</th>
 
-                          <th className='tabledata'>Owner Name</th>
-                          <th className='tabledata'>Schools Name</th>
-                          <th className='tabledata'>Email Id</th>
-                          <th className='tabledata'>Phone Number</th>
-                          <th className='tabledata'>Fax Number</th>
-                          <th className='tabledata'>Website</th>
-
-                          <th className='tabledata'>Location</th>
-                          <th className='tabledata'>Pincode</th>
-                          <th className='tabledata'>About School</th>
-                          <th className='tabledata'>Google Location</th>
-                          <th className='tabledata'>School Type</th>
-                          <th className='tabledata'>Board</th>
-                          <th className='tabledata'>Open Timing</th>
-                          <th className='tabledata'>No. of supporting staff</th>
-                          <th className='tabledata'>Other fees</th>
-                          <th className='tabledata'>Admission fees</th>
-                          <th className='tabledata'>Admission Link</th>
-
-                          <th className='tabledata'>Processing fees</th>
-                          <th className='tabledata'>Admission Process</th>
-
-                          <th className='tabledata'>Status</th>
-                          <th className='tabledata'>Action</th>
                         </tr>
                       </thead>
-                      <tbody>
-                        {this.state.preSchoolList.map((item, index) => (
-                          <tr className='tabledata' key={item._id}>
-                            <td>{index + 1}</td>
-                            <th>India</th>
-                            <td>{item.location}</td>
-
-                            <td>{item.ownerName}</td>
-
-                            <td>{item.schoolName}</td>
-                            <td>{item.email_id}</td>
-                            <td>{item.phone_number}</td>
-                            <td>{item.fax_number}</td>
-                            <td>{item.website}</td>
-
-                            <td>{item.location}</td>
-                            <td>{item.pincode}</td>
-                            <td>{item.about_school}</td>
-                            <td>{item.google_location}</td>
-                            <td>{item.schoolType}</td>
-                            <td>{item.board_of_education}</td>
-                            <td>{item.opening_timimg}</td>
-                            <td>{item.number_of_teachers}</td>
-                            <td>{item.other_fee}</td>
-                            <td>{item.addmission_fee}</td>
-                            <td>{item.admission_link}</td>
-
-                            <td>{item.processing_fee}</td>
-                            <td>{item.admission_process}</td>
-
-                            <td>
-                              <span className='label label-danger'>
-                                Waiting for Apporve
-                              </span>
-                            </td>
-                            <td style={{ textAlign: 'center' }}>
-                              <a href='/schooldetails'>
-                                {' '}
-                                <i
-                                  className='eye-button fa fa-eye'
-                                  title='View'
-                                ></i>
-                              </a>{' '}
-                              &nbsp;
-                            </td>
-                          </tr>
-                        ))}
-                      </tbody>
+                      <tbody>{this.renderList()}</tbody>
                     </table>
                   </div>
                 </div>

@@ -112,7 +112,7 @@ class left_sidebar extends React.Component {
     return (
       <div>
         <div className='left-navbar'>
-          <h3>B'Wise</h3>
+          <h3>Be'Wise</h3>
           <div className='mscroll-y'>
             <div className='nav-brand text-center hidden-xs'>
               <img
@@ -199,7 +199,7 @@ class left_sidebar extends React.Component {
                     className='menu-icons'
                     alt='icon'
                   />
-                  Company Info
+                  Vendor Info
                 </a>
                 <ul
                   className='list-unstyled sub-menu'
@@ -244,10 +244,10 @@ class left_sidebar extends React.Component {
                   </li>
                   {/* <li><a href="/seasonalcamp"
                                         className={SeasonalCamp ? 'active' : ''}
-                                    >Seasonal Camps</a></li>
+                                    >Seasonal Camps</a></li>*/}
                                     <li><a href="/creativeactivities"
                                         className={(this.state.currentLocation === '/creativeactivities') || creativeActivitiesOption ? 'active' : ''}
-                                    >Creative Activities</a></li>  */}
+                                    >Creative Activities</a></li>
                 </ul>
               </li>
               {/* <li><a href="/finance"

@@ -30,6 +30,38 @@ class PlayAreas extends Component {
     // jQuery("#currency_selected").val(4);
   }
 
+  renderList() {
+    if (this.state.playareaList.length != 0) {
+      return this.state.playareaList.map((item, i) => {
+        return (
+          <tr key={item._id} className="tabledata">
+            <td>{i + 1}</td>
+            <td>{item.playarea_name}</td>
+            {/* <td>{item.board_of_education ? item.board_of_education : '---'}</td> */}
+            <td>{item.email_id ? item.email_id : '---'}</td>
+            <td>{item.phone_number ? item.phone_number : '---'}</td>
+            <td>{item.location ? item.location : '---'}</td>
+            <td>
+              <span className="label label-danger">Waiting for Apporve</span>
+            </td>
+            <td><button className="btn btn-info">Edit</button></td>
+            <td><button className="btn btn-danger">Delete</button></td>
+            <td style={{ textAlign: 'center' }}>
+              <a href={'/playareadetails/' + item.vender}>
+                {' '}
+                <i className="eye-button fa fa-eye" title="View"></i>
+              </a>{' '}
+              &nbsp;
+            </td>
+          </tr>
+        );
+      });
+    } else {
+      return null;
+    }
+  }
+
+
   render() {
     return (
       <React.Fragment>
@@ -86,120 +118,30 @@ class PlayAreas extends Component {
                 >
                   <table
                     id="example1"
-                    className="table table-bordered table-striped "
+                    className="table table-bordered table-striped dataTable"
                     role="grid"
                     aria-describedby="example1_info"
                   >
                     <thead>
                       <tr role="row">
-                        <th className="tabledata">S.No</th>
-                        <th className="tabledata">Country</th>
-                        <th className="tabledata">City</th>
-                        <th className="tabledata">Area</th>
-                        <th className="tabledata">Type</th>
-
-                        <th className="tabledata">Name of Play Area</th>
-                        <th className="tabledata">Age group</th>
-                        <th className="tabledata">Phone Number</th>
-                        <th className="tabledata">Website</th>
-                        <th className="tabledata">Address of Play area</th>
-
+                        {/* <th className="tabledata">S.No</th>
+                        <th className="tabledata">Schools Name</th>
+                        <th className="tabledata">Board</th>
                         <th className="tabledata">Email Id</th>
-                        <th className="tabledata">Price/Hour</th>
-                        <th className="tabledata">No of Support Staff</th>
-                        <th className="tabledata">Organization Name</th>
-                        <th className="tabledata">Entry Fee</th>
-
-                        <th className="tabledata">Week Day Rate</th>
-                        <th className="tabledata">Weekend Rate</th>
-                        <th className="tabledata">Offers</th>
-                        <th className="tabledata">Facilities</th>
-
-                        <th className="tabledata">Bonus Features</th>
-                        <th className="tabledata">Packages</th>
-                        <th className="tabledata">Book Requirement</th>
-                        <th className="tabledata">Food</th>
-
-                        <th className="tabledata">Music</th>
-                        <th className="tabledata">Screen</th>
-                        <th className="tabledata">Kids Friendly</th>
-                        <th className="tabledata">
-                          Products & Services Offered
-                        </th>
-
-                        <th className="tabledata">Branches</th>
-                        <th className="tabledata">Landline number</th>
-                        {/* <th className='tabledata'>Images </th> */}
-
-                        {/* <th className='tabledata'>Location</th>
-                        <th className='tabledata'>Status</th>
-                        <th className='tabledata'>Action</th> */}
+                        <th className="tabledata">Phone Number</th>
+                        <th className="tabledata">Location</th>
+                        <th className="tabledata">Status</th>
+                        <th className="tabledata">Action</th> */}
+                             <th className="tabledata">S.No</th>
+                        <th className="tabledata">Playarea Name</th>
+                        <th className="tabledata">Email Id</th>
+                        <th className="tabledata">Phone Number</th>
+                        <th className="tabledata">Location</th>
+                        <th className="tabledata">Status</th>
+                        
                       </tr>
                     </thead>
-                    <tbody>
-                      {this.state.playareaList.map((item, index) => (
-                        <tr className="tabledata">
-                          <td>{index + 1}</td>
-                          <td>India</td>
-                          <td>{item.location}</td>
-                          <td>{item.area}</td>
-                          <td>{item.type_of_playarea}</td>
-
-                          <td>{item.playarea_name}</td>
-                          <td>{item.age_group}</td>
-                          <td>{item.phone_number}</td>
-                          <td>{item.website}</td>
-                          <td>{item.address}</td>
-
-                          <td>{item.email_id}</td>
-                          <td>{item.price_per_hour}</td>
-                          <td>{item.no_of_support_staff}</td>
-                          <td>{item.organisation_name}</td>
-                          <td>{item.entry_fee}</td>
-
-                          <td>{item.weekday_rate}</td>
-                          <td>{item.weekend_rate}</td>
-                          <td>{item.offers}</td>
-                          <td className="text-capitalize">
-                            {item.facilities
-                              .split(',')
-                              .map((item) => item.replace('_', ' '))
-                              .join(', ')}
-                          </td>
-
-                          <td>{item.bonus_features}</td>
-                          <td>{item.packages}</td>
-                          <td>{item.book_requirements}</td>
-                          <td>{item.food}</td>
-
-                          <td>{item.music}</td>
-                          <td>{item.screen}</td>
-                          <td>{item.kids_friendly}</td>
-                          <td>{item.products_and_service_offered}</td>
-
-                          <td>{item.branches}</td>
-                          <td>{item.landline_number}</td>
-                          {/* <td>{item.book_requirements}</td>
-                          <td>{item.food}</td> */}
-
-                          {/* <td>
-                            <span className='label label-primary'>
-                              Apporved
-                            </span>
-                          </td>
-                          <td style={{ textAlign: 'center' }}>
-                            <a href='/schooldetails'>
-                              {' '}
-                              <i
-                                className='eye-button fa fa-eye'
-                                title='View'
-                              ></i>
-                            </a>{' '}
-                            &nbsp;
-                          </td> */}
-                        </tr>
-                      ))}
-                    </tbody>
+                    <tbody>{this.renderList()}</tbody>
                   </table>
                 </div>
               </div>

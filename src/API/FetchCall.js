@@ -3,8 +3,7 @@ import config from './DomainName';
 // import { conditionalExpression } from '@babel/types';
 // var FormData = require('form-data');
 
-const token =
-  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ2ZW5kZXIiOnsiaWQiOiI1ZWFhOWM2MjI4NTcxYjFiZDAxMDc0OTcifSwiaWF0IjoxNTg4OTk5Nzk3LCJleHAiOjE1ODkzNTk3OTd9.BXgLA3w2AhC4MZCeHI-UZCMtUX3wAVGq6ggWPzNqgPY';
+const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ2ZW5kZXIiOnsiaWQiOiI1ZWJjZTlhMDI5ZWM4YTdlNmZkYTcxMDEifSwiaWF0IjoxNTg5NDM4OTA1LCJleHAiOjE1ODk3OTg5MDV9.Rdt79AGfPyrJVOQKURm_y_pWvRrbqjXBaPldoaBO5Cc";
 class FetchCall extends Component {
   static createSchool = async (data) => {
     delete data.errors;
@@ -31,7 +30,24 @@ class FetchCall extends Component {
   };
 
   static getSchoolDetails = async (id) => {
-    let result = await fetch(config.register + 'school/getInfo/' + id, {
+    let result = await fetch(config.register + 'school/vender/' + id, {
+      method: 'GET',
+      mode: 'cors',
+      headers: { 'Content-Type': 'application/json' },
+    });
+    return result.json();
+  };
+
+  static getPreSchoolDetails = async (id) => {
+    let result = await fetch(config.register + 'preschool/vender/' + id, {
+      method: 'GET',
+      mode: 'cors',
+      headers: { 'Content-Type': 'application/json' },
+    });
+    return result.json();
+  };
+  static getPlayAreaDetails = async (id) => {
+    let result = await fetch(config.register + 'playarea/vender/' + id, {
       method: 'GET',
       mode: 'cors',
       headers: { 'Content-Type': 'application/json' },
@@ -61,20 +77,21 @@ async function getAllPreSchools() {
 
 async function addPlayArea(data) {
   const formData = new FormData();
-
+  console.log(data);
   for (let key in data) {
     formData.append(key, data[key]);
   }
-
+  console.log(formData);
   let result = await fetch(config.register + 'playarea', {
     method: 'POST',
     mode: 'cors',
     headers: { 'x-auth-token': token },
     body: formData,
   });
-  console.log('Sucess');
+  console.log('Success');
   return result.json();
 }
+
 async function getAllPlayareas() {
   let result = await fetch(config.register + 'playarea', {
     method: 'GET',
@@ -83,7 +100,72 @@ async function getAllPlayareas() {
   });
   return result.json();
 }
+async function addDance(data) {
+  const formData = new FormData();
+  console.log(data);
+  for (let key in data) {
+    formData.append(key, data[key]);
+  }
+  console.log(formData);
+  let result = await fetch(config.register + 'dance', {
+    method: 'POST',
+    mode: 'cors',
+    headers: { 'x-auth-token': token },
+    body: formData,
+  });
+  console.log('Success');
+  return result.json();
+}
+async function addMusic(data) {
+  const formData = new FormData();
+  console.log(data);
+  for (let key in data) {
+    formData.append(key, data[key]);
+  }
+  console.log(formData);
+  let result = await fetch(config.register + 'music', {
+    method: 'POST',
+    mode: 'cors',
+    headers: { 'x-auth-token': token },
+    body: formData,
+  });
+  console.log('Success');
+  return result.json();
+}
+async function addYoga(data) {
+  const formData = new FormData();
+  console.log(data);
+  for (let key in data) {
+    formData.append(key, data[key]);
+  }
+  console.log(formData);
+  let result = await fetch(config.register + 'yoga', {
+    method: 'POST',
+    mode: 'cors',
+    headers: { 'x-auth-token': token },
+    body: formData,
+  });
+  console.log('Success');
+  return result.json();
+}
+async function addDrawing(data) {
+  const formData = new FormData();
+  console.log(data);
+  for (let key in data) {
+    formData.append(key, data[key]);
+  }
+  console.log(formData);
+  let result = await fetch(config.register + 'drawing', {
+    method: 'POST',
+    mode: 'cors',
+    headers: { 'x-auth-token': token },
+    body: formData,
+  });
+  console.log('Success');
+  return result.json();
+}
 
-export { addPreschool, getAllPreSchools, addPlayArea, getAllPlayareas };
+
+export { addPreschool, getAllPreSchools, addPlayArea, getAllPlayareas , addDance, addDrawing, addMusic,addYoga};
 
 export default FetchCall;

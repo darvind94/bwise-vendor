@@ -9,6 +9,34 @@ class CreativeActivities extends Component {
     constructor(props) {
         super(props);
         this.state = {
+
+
+            organisation_name: '',
+            trainee_name: '',
+            gender: '',
+            email_id: '',
+            phone_number: '',
+            landline_number: '',
+            fax_number: '',
+            website: '',
+            state: '',
+            location: '',
+            pincode: '',
+            address: '',
+            about_yoga: '',
+            google_location: '',
+            type_of_yoga: '',
+            available_days: '',
+            min_Age: '',
+            number_of_trainee: '',
+            timing: '',
+            establishment_Year: '',
+            avg_anual_fee: '',
+            addmission_fee: '',
+            area: '',
+            country: '',
+            images: '',
+
         }
     }
     componentDidMount() {
@@ -56,17 +84,17 @@ class CreativeActivities extends Component {
                                                 <div className="row">
                                                     <div className="form-group col-md-4">
                                                         <label>Organization Name <span className="astrick">*</span></label>
-                                                        <input type="text" name="cus-name" className="form-control" />
+                                                        <input type="text" name="organisation_name" className="form-control" />
                                                     </div>
                                                     <div className="form-group col-md-4">
                                                         <label>Trainee Name <span className="astrick">*</span></label>
-                                                        <input type="text" name="cus-name" className="form-control" />
+                                                        <input type="text" name="trainee_name" className="form-control" />
                                                     </div>
 
                                                     <div className="form-group col-md-4">
                                                         <label>Gender<span className="astrick">*</span></label>
                                                         <div className='custom-select-drop dropdown'>
-                                                            <select className='form-control selectpicker' multiple>
+                                                            <select className='form-control selectpicker' name="gender" multiple>
                                                                 <option key="1" id="1" data-id="1" value="1">Male</option>
                                                                 <option>Female</option>
                                                             </select>
@@ -80,43 +108,47 @@ class CreativeActivities extends Component {
                                                     </div>
                                                     <div className="form-group col-md-4">
                                                         <label>Email Id<span className="astrick">*</span></label>
-                                                        <input type="text" name="cus-name" className="form-control" />
+                                                        <input type="text" name="email_id" className="form-control" />
                                                     </div>
                                                     <div className="form-group col-md-4">
                                                         <label>Phone Number<span className="astrick">*</span></label>
-                                                        <input type="text" name="cus-name" className="form-control" />
+                                                        <input type="text" name="phone_number" className="form-control" />
                                                     </div>
                                                     <div className="form-group col-md-4">
                                                         <label>Landline Number<span className="astrick">*</span></label>
-                                                        <input type="text" name="cus-name" className="form-control" />
+                                                        <input type="text" name="landline_number" className="form-control" />
+                                                    </div>
+                                                    <div className="form-group col-md-4">
+                                                        <label>Fax Number<span className="astrick">*</span></label>
+                                                        <input type="text" name="fax_number" className="form-control" />
                                                     </div>
                                                     <div className="form-group col-md-4">
                                                         <label>Website<span className="astrick">*</span></label>
-                                                        <input type="text" name="cus-name" className="form-control" />
+                                                        <input type="text" name="website" className="form-control" />
                                                     </div>
                                                     <div className="form-group col-md-4">
                                                         <label>State<span className="astrick">*</span></label>
-                                                        <input type="text" name="cus-name" className="form-control" />
+                                                        <input type="text" name="state" className="form-control" />
                                                     </div>
                                                     <div className="form-group col-md-4">
                                                         <label>Location<span className="astrick">*</span></label>
-                                                        <input type="text" name="cus-name" className="form-control" />
+                                                        <input type="text" name="location" className="form-control" />
                                                     </div>
                                                     <div className="form-group col-md-4">
                                                         <label>Pincode<span className="astrick">*</span></label>
-                                                        <input type="text" name="cus-name" className="form-control" />
+                                                        <input type="text" name="pincode" className="form-control" />
                                                     </div>
                                                     <div className="form-group col-md-4">
                                                         <label>Address<span className="astrick">*</span></label>
-                                                        <input type="text" name="cus-name" className="form-control" />
+                                                        <input type="text" name="address" className="form-control" />
                                                     </div>
                                                     <div className="form-group col-md-4">
                                                         <label>About the Music School<span className="astrick">*</span></label>
-                                                        <input type="text" name="cus-name" className="form-control" />
+                                                        <input type="text" name="about_yoga" className="form-control" />
                                                     </div>
                                                     <div className="form-group col-md-4">
                                                         <label>Google Location(Iframe)<span className="astrick">*</span></label>
-                                                        <input type="text" name="cus-name" className="form-control" />
+                                                        <input type="text" name="google_location" className="form-control" />
                                                     </div>
                                                 </div>
                                                 <div className="row">
@@ -126,7 +158,7 @@ class CreativeActivities extends Component {
                                                     <div className="form-group col-md-4">
                                                         <label>Type of Yoga<span className="astrick">*</span></label>
                                                         <div className='custom-select-drop dropdown'>
-                                                            <select className='form-control selectpicker' multiple>
+                                                            <select className='form-control selectpicker' name="type_of_yoga" multiple>
                                                                 <option key="1" id="1" data-id="1" value="1">Indian</option>
                                                                 <option>Western</option>
                                                             </select>
@@ -135,7 +167,7 @@ class CreativeActivities extends Component {
                                                     <div className="form-group col-md-4">
                                                         <label>Avaliable Days<span className="astrick">*</span></label>
                                                         <div className='custom-select-drop dropdown'>
-                                                            <select className='form-control selectpicker' multiple>
+                                                            <select className='form-control selectpicker' name="available_days" multiple>
                                                                 <option key="1" id="1" data-id="1" value="1">Week Days</option>
                                                                 <option>Week End</option>
                                                             </select>
@@ -144,21 +176,21 @@ class CreativeActivities extends Component {
                                                     <div className="form-group col-md-4 input-group-cus">
                                                         <div>
                                                             <label>Min Age</label>
-                                                            <input type="text" name="cus-name" className="form-control" />
+                                                            <input type="text" name="min_Age" className="form-control" />
                                                         </div>
                                                         <div>
                                                             <label>&nbsp;</label>
-                                                            <input type="text" name="cus-name" className="form-control" />
+                                                            <input type="text" name="min_Age" className="form-control" />
                                                         </div>
                                                     </div>
                                                     <div className="form-group col-md-4">
                                                         <label>Number of Trainee<span className="astrick">*</span></label>
-                                                        <input type="text" className="form-control" />
+                                                        <input type="text" name="number_of_trainee" className="form-control" />
                                                     </div>
                                                     <div className="form-group col-md-4">
                                                         <label>Timing<span className="astrick">*</span></label>
                                                         <div className='custom-select-drop dropdown'>
-                                                            <select className='form-control selectpicker' multiple>
+                                                            <select className='form-control selectpicker' name="timing" multiple>
                                                                 <option key="1" id="1" data-id="1" value="1">5.00PM - 7.00PM</option>
                                                                 <option>7.00PM - 9.00PM</option>
                                                             </select>
@@ -166,15 +198,25 @@ class CreativeActivities extends Component {
                                                     </div>
                                                     <div className="form-group col-md-4">
                                                         <label>Establishment Year <span className="astrick">*</span></label>
-                                                        <input type="text" name="cus-name" className="form-control" />
+                                                        <input type="text" name="establishment_Year" className="form-control" />
                                                     </div>
                                                     <div className="form-group col-md-4">
                                                         <label>Average Fees(Monthly) <span className="astrick">*</span></label>
-                                                        <input type="text" name="cus-name" className="form-control" />
+                                                        <input type="text" name="avg_anual_fee" className="form-control" />
                                                     </div>
                                                     <div className="form-group col-md-4">
                                                         <label>Admission Fees <span className="astrick">*</span></label>
-                                                        <input type="text" name="cus-name" className="form-control" />
+                                                        <input type="text" name="addmission_fee" className="form-control" />
+
+                                                    </div>
+                                                    <div className="form-group col-md-4">
+                                                        <label>Area<span className="astrick">*</span></label>
+                                                        <input type="text" name="area" className="form-control" />
+
+                                                    </div>
+                                                    <div className="form-group col-md-4">
+                                                        <label>Country<span className="astrick">*</span></label>
+                                                        <input type="text" name="country" className="form-control" />
 
                                                     </div>
                                                     <div className="form-group col-md-4"><label>Is Refundable (Admission Fees)<span className="astrick">*</span></label>
@@ -191,7 +233,7 @@ class CreativeActivities extends Component {
                                                     </div>
                                                     <div className="form-group col-md-4">
                                                         <label>Images <span className="astrick">*</span></label>
-                                                        <input type="file" name="cus-name" className="form-control" />
+                                                        <input type="file" name="images" className="form-control" />
                                                     </div>
                                                 </div>
                                                 <div className="col-md-12 col-xs-12 btn-bdr">

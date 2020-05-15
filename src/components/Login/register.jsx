@@ -40,7 +40,7 @@ class Register extends Component {
                             <div className="nav-brand text-center">
                                 {/* <img className="img-responsive" src="images/nav-brand-transparent.png" alt="Logo" /> */}
                             </div>
-                            <h1>B'Wise</h1>
+                            <h1>Be'Wise</h1>
 
                         </div>
                         <div className="col-md-8 col-sm-8 register-right">
